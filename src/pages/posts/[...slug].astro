@@ -2,16 +2,23 @@
 import { getCollection, render } from 'astro:content';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 
+// Tell Astro which pages to generate at build time -- one page per blog post
 export async function getStaticPaths() {
+  // Find all the markdown files that match the content.config.ts definition, validate them against the Zod schema, and return them as an array of post objects.
   const posts = await getCollection('blog');
+  // For each post: params sets the URL from the filename, props passes the post data down to the page
   return posts.map(post => ({
     params: { slug: post.id }, props: { post },
   }));
 }
 
+// Receive the post prop from getStaticPaths
 const { post } = Astro.props;
+// Convert the markdown content into renderable HTML
 const { Content } = await render(post);
 ---
+{/* post.data is the frontmatter fields (title, date, tags etc.) */}
+{/* <Content /> is the rendered markdown body, injected into the layout's <slot /> */}
 <MarkdownPostLayout frontmatter={post.data}>
   <Content />
 </MarkdownPostLayout>

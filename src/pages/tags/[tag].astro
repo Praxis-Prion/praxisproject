@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+
+// Tell Astro which tag pages to generate at build time
+export async function getStaticPaths() {
+  // Find all the markdown files that match the content.config.ts definition, validate them against the Zod schema, and return them as an array of post objects.
+  const allPosts = await getCollection("blog");
+  // Loop over every post, grab its tags array, flatten into one big array, deduplicate with Set
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+  // For each unique tag, generate a page with only the posts that have that tag
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },  // becomes the URL: /tags/astro, /tags/blogging etc.
+      props: { posts: filteredPosts },  // only posts matching this tag passed down
+    };
+  });
+}
+
+// Receive which tag this page is for and its matching posts
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<BaseLayout pageTitle={tag}>
+  <p>Posts tagged with {tag}</p>
+  <ul>
+    { posts.map((post) => <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />) }
+  </ul>
+</BaseLayout>

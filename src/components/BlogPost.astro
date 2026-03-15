@@ -1,0 +1,7 @@
+---
+// Receives url and title props from parent, renders a linked list item
+const { url, title } = Astro.props;
+---
+<li>
+  <a href={url}>{title}</a>
+</li>
