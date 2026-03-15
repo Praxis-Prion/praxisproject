@@ -12,14 +12,19 @@ import HeaderNav from '../components/HeaderNav.astro';
 </header>
 
 <style>
+header {
+  background-color: gray;
+}
+
 .header-bar {
   display: flex;
   justify-content: space-between;
 }
 
-@media screen and (min-width: 636px) {
+@media screen and (min-width: 768px) {
   header {
     display: flex;
+    background-color: gray;
     justify-content: space-between;
   }
 }
