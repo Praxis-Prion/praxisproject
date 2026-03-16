@@ -3,12 +3,13 @@
 import HeaderMenu from '../components/HeaderMenu.astro';
 import HeaderNav from '../components/HeaderNav.astro';
 import HeaderSearch from '../components/HeaderSearch.astro';
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
+// import { Image } from 'astro:assets';
+// import logo from '../assets/logo.png';
 ---
 <header>
   <div class="title">
-    <a href="/"><Image src={logo} alt="Praxis Project" /></a>
+    <!-- <a href="/"><Image src={logo} alt="Praxis Project" /></a> -->
+    <a href="/"><h1>Praxis Project</h1></a>
   </div>
   <HeaderMenu />
   <HeaderNav />
@@ -24,7 +25,6 @@ import logo from '../assets/logo.png';
     -webkit-backdrop-filter: blur(8px); /* Safari */
     background-color: rgba(0, 0, 50, 0.5);
     align-items: center;
-    /* gap: 1rem; */
     flex-wrap: wrap;
     box-shadow: 0 5px 10px rgba(0,0,0,0.25);
   }
@@ -34,20 +34,21 @@ import logo from '../assets/logo.png';
     display: flex;
   }
 
-  .title img{
-    height: 50px;
-    width: auto;
+  .title h1{
+    /* height: 50px; */
+    color: #cfcfcf;
     padding-left: 5px;
     padding-top: 5px;
     transition: filter 0.5s ease, transform 0.5s ease;
   }
 
-  .title img:hover {
+  .title h1:hover {
     filter: drop-shadow(0 0 8px rgba(255, 150, 100, 0.5));
-    transform: scale(1.005);
+    transform: scale(1.01);
   }
 
   .title a {
-  display: flex;
+    display: flex;
+    text-decoration: none;
   }
 </style>
