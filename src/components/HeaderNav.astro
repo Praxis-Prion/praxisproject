@@ -16,26 +16,39 @@
 
   .nav a {
     display: block;
-    padding: 10px 0;
+    font-weight: bold;
+    padding: 0.75rem 0;
+    color: white;
+    text-decoration: none;
+    transition: filter 0.5s ease, transform 0.2s ease;
   }
 
   .nav a:hover,
   .nav a:focus {
-    background-color: #ff9776;
+    /* background-color: #ff9776; */
+    filter: drop-shadow(0 0 10px rgba(255, 150, 100, 1));
+    transform: scale(1.1);
   }
 
   @media screen and (min-width: 768px) {
     nav {
       display: flex;
+      align-items: stretch;
       gap: 1rem;
+      align-self: stretch;
     }
 
     .nav {
       display: flex;
+      align-self: stretch;
+      padding-right: 20px;
     }
 
     .nav a {
-      padding: 0px 10px;
+      display: flex;
+      font-weight: bold;
+      padding: 0rem 0.75rem;
+      align-items: center;
     }
   }
 </style>

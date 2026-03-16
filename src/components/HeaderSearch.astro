@@ -6,28 +6,98 @@ import Search from "astro-pagefind/components/Search";
   <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
 </div>
 
-<style>
+<style is:global>
   .search {
     display: none;
-  }
-
-  :global(.pagefind-ui) {
     position: relative;
+    margin: 0px;
+    padding: 0px;
   }
 
-  :global(.pagefind-ui__drawer) {
+  .pagefind-ui {
+    position: relative;
+    /* --pagefind-ui-scale: 0.5; */
+    /* --pagefind-ui-font: sans-serif; */
+    /* font-size: 1rem !important; */
+    /* --pagefind-ui-primary: navy; */
+    /* --pagefind-ui-text: black; */
+    /* --pagefind-ui-border: slategrey; */
+    /* --pagefind-ui-border-width: 1px; */
+    /* --pagefind-ui-border-radius: 0.25rem; */
+    /* --pagefind-ui-font: sans-serif; */
+    /* width: 50%; */
+  }
+
+  .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
     position: absolute;
-    right: 0;
-    top: 100%;
+    /* max-height: calc(100vh - 33vh); */
+    overflow-y: auto;
+    padding: 0rem 0.5rem;
+    padding-bottom: 2rem;
+    overscroll-behavior: contain;
     background: white;
     width: 100%;
-    z-index: 100;
+    top: 100%;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: -5px 5px 10px rgba(0,0,0,0.25);
+    z-index: 1000;
   }
+
+  .pagefind-ui .pagefind-ui__result-link {
+    /* color: red !important; */
+  }
+
+  .pagefind-ui .pagefind-ui__result-excerpt {
+    /* color: red; */
+  }
+
   @media screen and (min-width: 768px) {
+    .pagefind-ui__form .pagefind-ui__search-input {
+      height: 40px !important;
+      right: 3px
+      /* font-size: 2rem; */
+    }
+
     .search {
       display: block;
     }
+
+    .pagefind-ui__form::before {
+      top: 50% !important;
+      transform: translateY(-50%);
+    }
+
+    .pagefind-ui__search-clear {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      height: auto !important;
+    }
   }
+
+
 </style>
+
+<script>
+  // On mobile, the search drawer needs to fill the remaining viewport height below the search input.
+  // CSS can't calculate this dynamically since the input position changes based on header state.
+  // MutationObserver watches for the drawer's hidden class being removed (i.e. results appearing),
+  // then measures the search input's position and sets the drawer to fill the remaining screen height.
+  const searchInput = document.querySelector('.pagefind-ui__search-input') as HTMLElement;
+  const drawer = document.querySelector('.pagefind-ui__drawer') as HTMLElement;
+
+  if (drawer && searchInput) {
+    const observer = new MutationObserver(() => {
+      if (!drawer.classList.contains('pagefind-ui__hidden')) {
+        const rect = searchInput.getBoundingClientRect();
+        drawer.style.position = 'fixed';
+        drawer.style.height = (window.innerHeight - rect.bottom) + 'px';
+      } else {
+        // reset to desktop styles when closed
+        drawer.style.position = '';
+        drawer.style.height = '';
+      }
+    });
+
+    observer.observe(drawer, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>

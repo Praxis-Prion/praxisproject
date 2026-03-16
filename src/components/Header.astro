@@ -3,10 +3,12 @@
 import HeaderMenu from '../components/HeaderMenu.astro';
 import HeaderNav from '../components/HeaderNav.astro';
 import HeaderSearch from '../components/HeaderSearch.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 ---
 <header>
   <div class="title">
-    <h1>Praxis Project</h1>
+    <a href="/"><Image src={logo} alt="Praxis Project" /></a>
   </div>
   <HeaderMenu />
   <HeaderNav />
@@ -15,14 +17,37 @@ import HeaderSearch from '../components/HeaderSearch.astro';
 
 <style>
   header {
-    background-color: cyan;
     display: flex;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Safari */
+    background-color: rgba(0, 0, 50, 0.5);
     align-items: center;
-    gap: 1rem;
+    /* gap: 1rem; */
     flex-wrap: wrap;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
   }
 
   .title {
     margin-right: auto;
+    display: flex;
+  }
+
+  .title img{
+    height: 50px;
+    width: auto;
+    padding-left: 5px;
+    padding-top: 5px;
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  .title img:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 150, 100, 0.5));
+    transform: scale(1.005);
+  }
+
+  .title a {
+  display: flex;
   }
 </style>
