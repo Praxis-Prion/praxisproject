@@ -1,3 +1,34 @@
 ---
 // /sites/praxisproject/src/components/HeaderMenu.astro
 ---
+<div class="menu">
+  <button aria-expanded="false" aria-controls="main-menu" class="menu-button">
+    Menu
+  </button>
+</div>
+
+<style>
+  .menu {
+  }
+
+  /* controls .nav visibility when menu is open */
+  :global(:has(.menu-button[aria-expanded="true"]) .nav) {
+    display: block;
+    width: 100%;
+    order: 99;
+    text-align: center;
+  }
+
+  /* controls .search visibility when menu is open */
+  :global(:has(.menu-button[aria-expanded="true"]) .search) {
+    display: block;
+    width: 100%;
+    order: 100;
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu {
+      display: none;
+    }
+  }
+</style>

@@ -1,3 +1,41 @@
 ---
 // /sites/praxisproject/src/components/HeaderNav.astro
 ---
+<div class="nav" id="main-menu">
+  <nav>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/tags/">Tags</a>
+  </nav>
+</div>
+
+<style>
+  .nav {
+    display: none;
+  }
+
+  .nav a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .nav a:hover,
+  .nav a:focus {
+    background-color: #ff9776;
+  }
+
+  @media screen and (min-width: 768px) {
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav {
+      display: flex;
+    }
+
+    .nav a {
+      padding: 0px 10px;
+    }
+  }
+</style>

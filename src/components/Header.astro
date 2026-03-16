@@ -2,114 +2,27 @@
 // /sites/praxisproject/src/components/Header.astro
 import HeaderMenu from '../components/HeaderMenu.astro';
 import HeaderNav from '../components/HeaderNav.astro';
-import Search from "astro-pagefind/components/Search";
+import HeaderSearch from '../components/HeaderSearch.astro';
 ---
 <header>
-  <div class="title">Praxis Project</div>
-  <div class="menu">
-    <button aria-expanded="false" aria-controls="main-menu" class="menu-button">Menu</button>
+  <div class="title">
+    <h1>Praxis Project</h1>
   </div>
-  <div class="nav">
-    <nav>
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-      <a href="/tags/">Tags</a>
-    </nav>
-  </div>
-  <div class="search">
-    <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
-  </div>
+  <HeaderMenu />
+  <HeaderNav />
+  <HeaderSearch />
 </header>
 
 <style>
-header {
-  background-color: gray;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.title {
-  margin-right: auto;
-  background-color: red;
-}
-
-.menu {
-  background-color: green;
-}
-
-.nav {
-  background-color: yellow;
-}
-
-.search {
-  background-color: orange;
-  display: none;
-}
-
-.nav {
-  display: none;
-}
-
-.nav a {
-  display: block;
-  padding: 10px 0;
-}
-
-.nav a:hover,
-.nav a:focus {
-  background-color: #ff9776;
-}
-
-:global(:has(.menu-button[aria-expanded="true"]) .nav) {
-  display: block;
-  width: 100%;
-  order: 99;
-  text-align: center;
-}
-
-:global(:has(.menu-button[aria-expanded="true"]) .search) {
-  display: block;
-  width: 100%;
-  order: 100;
-}
-
-:global(.pagefind-ui) {
-  position: relative;
-}
-
-:global(.pagefind-ui__drawer) {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background: white;
-  width: 100%;
-  z-index: 100;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-@media screen and (min-width: 768px) {
-  nav {
+  header {
+    background-color: cyan;
     display: flex;
+    align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
-  .nav {
-    display: flex;
+  .title {
+    margin-right: auto;
   }
-
-  .nav a {
-    padding: 0px 10px;
-  }
-
-  .search {
-    display: block;
-  }
-
-  .menu {
-    display: none;
-  }
-}
 </style>
