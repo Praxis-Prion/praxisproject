@@ -4,7 +4,7 @@ pubDate: 2022-03-14
 description: 'My fourth post description'
 author: 'Praxis'
 image:
-  url: '/images/placeholder.jpg'
+  url: '../assets/test.png'
   alt: 'placeholder'
 tags: ["homelab", "projects", "workshop"]
 ---

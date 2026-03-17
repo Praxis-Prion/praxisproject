@@ -1,20 +1,31 @@
 ---
 // /sites/praxisproject/src/layouts/MarkdownPostLayout.astro
 import BaseLayout from './BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { Image } from 'astro:assets';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  <Card>
+    {frontmatter.image && (
+      <a href={frontmatter.image.url.src} target="_blank">
+        <Image
+          src={frontmatter.image.url}
+          alt={frontmatter.image.alt}
+          style="width: 100%; height: auto;"
+        />
+      </a>
+    )}
+    <h2>{frontmatter.title}</h2>
+    <p>By <a href="../../about/">{frontmatter.author}</a> on {frontmatter.pubDate.toLocaleDateString()}</p>
+    <!-- <p><em>{frontmatter.description}</em></p> -->
 
-  <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-    ))}
-  </div>
-  <slot />
+      <div class="tags">Tags:
+        {frontmatter.tags.map((tag: string) => (
+          <span class="tag"><a href={`/tags/${tag}`}>{tag}</a></span>
+        ))}
+      </div>
+    <slot />
+  </Card>
 </BaseLayout>
 
-<style></style>

@@ -1,19 +1,31 @@
 ---
-title: 'My First Post'
+title: 'First Post'
 pubDate: 2024-03-14
 description: 'My first post description'
 author: 'Praxis'
 image:
-  url: '/images/placeholder.jpg'
-  alt: 'placeholder'
-tags: ["tech", "woodworking", "metalworking"]
+  url: '../assets/test.png'
+  alt: 'placeholder image'
+tags: ["tech", "woodworking", "metalworking", "more", "tags", "here", "to", "run-off-the-edge", "of-the-page", "and-then-we-see-if-it-wraps"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+## Header
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. **Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit.** Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
 
-Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
+### Smaller Header
+
+Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. ***Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue.*** Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+
+* List
+* List
+* List
+
+*Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.*
+
+1. list
+2. list
+3. list
 
 Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
 

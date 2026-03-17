@@ -17,7 +17,43 @@
     margin-top: 1rem;
   }
 
- :global(.card li) {
-    margin-left: 15px;
+  :global(.card h1),
+  :global(.card h2),
+  :global(.card h3),
+  :global(.card p),
+  :global(.card ul),
+  :global(.card ol) {
+    margin-bottom: 1rem;
+  }
+
+  :global(.card h1),
+  :global(.card h2),
+  :global(.card h3) {
+    margin-top: 1.5rem;
+  }
+
+  :global(.card li) {
+    margin-left: 1.5rem;
+  }
+
+  :global(.card a img) {
+    border-radius: 8px;
+    transition: opacity 0.2s ease;
+  }
+
+  :global(.card a img:hover) {
+    /* opacity: 0.85; */
+    cursor: pointer;
+  }
+
+  :global(.card .tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  :global(.card a) {
+    text-decoration: none;
+    color: blue;
   }
 </style>

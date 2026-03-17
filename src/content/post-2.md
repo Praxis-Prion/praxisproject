@@ -1,10 +1,10 @@
 ---
-title: 'My second Post'
+title: 'This is a long post title that is intentionally very long to see what happens'
 pubDate: 2025-03-14
 description: 'My second post description'
 author: 'Praxis'
 image:
-  url: '/images/placeholder.jpg'
+  url: '../assets/test.png'
   alt: 'placeholder'
 tags: ["woodworking", "metalworking", "homelab"]
 ---

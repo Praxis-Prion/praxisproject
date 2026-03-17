@@ -4,7 +4,7 @@ pubDate: 2023-03-14
 description: 'My third post description'
 author: 'Praxis'
 image:
-  url: '/images/placeholder.jpg'
+  url: '../assets/test.png'
   alt: 'placeholder'
 tags: ["metalworking", "homelab", "projects"]
 ---
