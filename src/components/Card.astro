@@ -66,6 +66,23 @@ const { linkCard = false } = Astro.props;
   gap: 0.5rem;
 }
 
+:global(.card img) {
+  max-width: 100%;
+  height: auto;
+}
+
+:global(.card .float-left) {
+  float: left;
+  max-width: 40%;
+  margin: 0 1rem 1rem 0;
+}
+
+:global(.card .float-right) {
+  float: right;
+  max-width: 40%;
+  margin: 0 0 1rem 1rem;
+}
+
 /* ========================
    Link card variant
    ======================== */
