@@ -25,7 +25,27 @@ const { frontmatter } = Astro.props;
           <span class="tag"><a href={`/tags/${tag}`}>{tag}</a></span>
         ))}
       </div>
-    <slot />
+    <div class="post-content">
+      <slot />
+    </div>
   </Card>
 </BaseLayout>
 
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin-right: 0.2rem;
+  }
+</style>

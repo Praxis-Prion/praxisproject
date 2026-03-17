@@ -25,17 +25,26 @@ const { linkCard = false } = Astro.props;
 /* ========================
    Card typography
    ======================== */
-:global(.card h1),
-:global(.card h2),
-:global(.card h3),
-:global(.card p),
-:global(.card ul),
-:global(.card ol) {
+feat: home page recent posts and blog post improvements
+
+- index: add recent posts section showing 3 latest posts with date
+- index: add welcome card
+- BlogPost: add pubDate prop displayed above title
+- Card: move typography spacing to .post-content selector
+- Card: add border-radius to all card images
+- Card: fix description and date text color to black in link cards
+- MarkdownPostLayout: add post-content wrapper div for scoped typography
+- MarkdownPostLayout: style tags with pill appearance and flex layout:global(.post-content h1),
+:global(.post-content h2),
+:global(.post-content h3),
+:global(.post-content p),
+:global(.post-content ul),
+:global(.post-content ol) {
   padding-bottom: 1rem;
 }
 
-:global(.card h1),
-:global(.card h2) {
+:global(.post-content h1),
+:global(.post-content h2) {
   padding-top: 1.5rem;
 }
 
@@ -69,6 +78,7 @@ const { linkCard = false } = Astro.props;
 :global(.card img) {
   max-width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 :global(.card .float-left),
@@ -81,13 +91,13 @@ const { linkCard = false } = Astro.props;
 @media screen and (min-width: 768px) {
   :global(.card .float-left) {
     float: left;
-    max-width: 40%;
+    max-width: 45%;
     margin: 0 1rem 1rem 0;
   }
 
   :global(.card .float-right) {
     float: right;
-    max-width: 40%;
+    max-width: 45%;
     margin: 0 0 1rem 1rem;
   }
 }
@@ -106,13 +116,21 @@ const { linkCard = false } = Astro.props;
 }
 
 :global(.card-link h3) {
-  height: calc(1.5em * 3);
+  height: calc(1.4rem * 3);
   overflow: hidden;
   margin-bottom: 0.5rem;
 }
 
 :global(.card-link p) {
-  height: calc(1.45em * 5);
+  height: calc(1.2rem * 5);
   overflow: hidden;
+}
+
+:global(.card-link span) {
+  color: black;
+}
+
+:global(.card-link a p) {
+  color: black;
 }
 </style>
