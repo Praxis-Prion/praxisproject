@@ -2,6 +2,7 @@
 // /sites/praxisproject/src/pages/tags/index.astro
 import { getCollection } from "astro:content";
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
 const pageTitle = "Tag Index";
 // Get all posts and extract a deduplicated flat array of every tag used across all posts
 const allPosts = await getCollection("blog");
@@ -10,7 +11,22 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 <BaseLayout pageTitle={pageTitle}>
   <div class="tags">
     {tags.map((tag) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+      <Card><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p></Card>
     ))}
   </div>
 </BaseLayout>
+
+<style>
+  .tags {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    list-style: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tags {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+</style>

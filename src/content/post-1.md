@@ -6,7 +6,7 @@ author: 'Praxis'
 image:
   url: '/images/placeholder.jpg'
   alt: 'placeholder'
-tags: ["tag-1", "tag-2", "tag-3"]
+tags: ["tech", "woodworking", "metalworking"]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.

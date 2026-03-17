@@ -1,9 +1,21 @@
 ---
 // /sites/praxisproject/src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Home Page";
+import Card from '../components/Card.astro';
+const pageTitle = "Home";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  index <br>
-	<a href="./posts/post-1">post-1</a>
+<Card>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id diam sagittis, lacinia arcu ut, fermentum felis. Praesent vel pretium erat. In viverra urna quis eros mollis pharetra. Curabitur lorem lorem, tristique non diam eget, fermentum suscipit velit. Sed semper orci eget neque cursus aliquam. In tempus vestibulum quam, volutpat convallis justo laoreet iaculis. Nunc quis interdum felis. Nulla gravida velit sit amet mi commodo feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc orci elit, venenatis vitae commodo at, efficitur sit amet sem. Donec in libero ullamcorper sapien pellentesque convallis.</p>
+<ul>
+  <li>one</li>
+  <li>two</li>
+</ul>
+</Card>
+<Card>
+<p>Proin malesuada dapibus nunc, pharetra posuere elit bibendum vel. Mauris auctor, nunc at venenatis laoreet, dolor enim pulvinar nunc, sed faucibus urna quam eget ligula. Aliquam sagittis volutpat aliquam. Phasellus tincidunt vitae enim et molestie. Donec mollis gravida interdum. Aliquam eget odio vitae ex rutrum facilisis quis blandit odio. Vestibulum risus urna, blandit id ultricies eget, venenatis sed lorem. Nunc sit amet mauris a ante cursus tristique eget vitae felis. Suspendisse tempor aliquet diam sed luctus. Vivamus vitae purus in nisl sagittis suscipit. Vivamus et eros a augue volutpat tincidunt et quis nulla. Nulla leo lacus, pulvinar et dolor vel, lacinia laoreet nisl. Suspendisse vitae eros molestie, feugiat purus eget, sodales metus. Maecenas fringilla lacus eget fringilla vestibulum. Donec auctor arcu quis orci eleifend, nec pretium urna tempor.</p>
+</Card>
+<Card>
+<p>Aliquam nec dui vel massa iaculis congue nec in metus. Suspendisse potenti. Mauris tristique nibh vel ligula pellentesque, eu porta purus iaculis. Vestibulum non urna sit amet quam vehicula sodales at eget urna. Suspendisse malesuada ligula ut mauris sodales efficitur. Fusce vel rhoncus libero. Aenean et molestie turpis, eu commodo justo. Pellentesque mollis venenatis scelerisque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse eu sapien eget orci cursus viverra. Proin tristique lectus ex, vel facilisis arcu congue mollis. Nullam quis vehicula neque.</p>
+</Card>
 </BaseLayout>

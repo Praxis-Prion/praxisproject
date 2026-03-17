@@ -1,4 +1,5 @@
 ---
+// /sites/praxisproject/src/pages/articles.astro
 import { getCollection } from "astro:content";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.astro';
@@ -6,12 +7,26 @@ const allPosts = await getCollection("blog");
 const pageTitle = "Articles";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <p>article list</p>
-  <ul>
+  <div class="articles">
     {
       allPosts.map((post) => (
         <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
       ))
     }
-  </ul>
+  </div>
 </BaseLayout>
+
+<style>
+  .articles {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    list-style: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .articles {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

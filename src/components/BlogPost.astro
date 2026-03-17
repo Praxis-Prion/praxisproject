@@ -1,8 +1,10 @@
 ---
 // /sites/praxisproject/src/components/BlogPost.astro
 // Receives url and title props from parent, renders a linked list item
+import Card from '../components/Card.astro';
 const { url, title } = Astro.props;
+
 ---
-<li>
+<Card>
   <a href={url}>{title}</a>
-</li>
+</Card>
