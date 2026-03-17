@@ -8,7 +8,7 @@ const pageTitle = "Tag Index";
 const allPosts = await getCollection("blog");
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pagefindIgnore={true}>
   <div class="tags">
     {tags.map((tag) => (
       <Card><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p></Card>
