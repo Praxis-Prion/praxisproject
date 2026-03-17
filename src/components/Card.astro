@@ -71,16 +71,25 @@ const { linkCard = false } = Astro.props;
   height: auto;
 }
 
-:global(.card .float-left) {
-  float: left;
-  max-width: 40%;
-  margin: 0 1rem 1rem 0;
+:global(.card .float-left),
+:global(.card .float-right) {
+  float: none;
+  max-width: 100%;
+  margin: 0 0 1rem 0;
 }
 
-:global(.card .float-right) {
-  float: right;
-  max-width: 40%;
-  margin: 0 0 1rem 1rem;
+@media screen and (min-width: 768px) {
+  :global(.card .float-left) {
+    float: left;
+    max-width: 40%;
+    margin: 0 1rem 1rem 0;
+  }
+
+  :global(.card .float-right) {
+    float: right;
+    max-width: 40%;
+    margin: 0 0 1rem 1rem;
+  }
 }
 
 /* ========================
