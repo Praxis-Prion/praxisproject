@@ -1,59 +1,92 @@
 ---
 // /sites/praxisproject/src/components/Card.astro
+const { linkCard = false } = Astro.props;
 ---
-<div class="card">
+<div class={`card ${linkCard ? 'card-link' : ''}`}>
   <slot />
 </div>
 
 <style>
-  .card {
-    background-color: rgba(200, 200, 255, 0.25);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    margin-top: 1rem;
-  }
+/* ========================
+   Base card
+   ======================== */
+.card {
+  background-color: rgba(200, 200, 255, 0.25);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  margin-top: 1rem;
+  break-inside: avoid;
+}
 
-  :global(.card h1),
-  :global(.card h2),
-  :global(.card h3),
-  :global(.card p),
-  :global(.card ul),
-  :global(.card ol) {
-    margin-bottom: 1rem;
-  }
+/* ========================
+   Card typography
+   ======================== */
+:global(.card h1),
+:global(.card h2),
+:global(.card h3),
+:global(.card p),
+:global(.card ul),
+:global(.card ol) {
+  padding-bottom: 1rem;
+}
 
-  :global(.card h1),
-  :global(.card h2),
-  :global(.card h3) {
-    margin-top: 1.5rem;
-  }
+:global(.card h1),
+:global(.card h2) {
+  padding-top: 1.5rem;
+}
 
-  :global(.card li) {
-    margin-left: 1.5rem;
-  }
+:global(.card li) {
+  margin-left: 1rem;
+}
 
-  :global(.card a img) {
-    border-radius: 8px;
-    transition: opacity 0.2s ease;
-  }
+/* ========================
+   Card links and images
+   ======================== */
+:global(.card a) {
+  text-decoration: none;
+  color: blue;
+}
 
-  :global(.card a img:hover) {
-    /* opacity: 0.85; */
-    cursor: pointer;
-  }
+:global(.card a img) {
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
 
-  :global(.card .tags) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+:global(.card a img:hover) {
+  cursor: pointer;
+}
 
-  :global(.card a) {
-    text-decoration: none;
-    color: blue;
-  }
+:global(.card .tags) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ========================
+   Link card variant
+   ======================== */
+.card-link {
+  padding: 0;
+  overflow: hidden;
+}
+
+:global(.card-link a) {
+  display: block;
+  padding: 20px;
+}
+
+:global(.card-link h3) {
+  height: calc(1.5em * 3);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+:global(.card-link p) {
+  height: calc(1.45em * 5);
+  overflow: hidden;
+}
 </style>

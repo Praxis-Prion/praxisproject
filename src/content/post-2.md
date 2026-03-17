@@ -1,7 +1,7 @@
 ---
 title: 'This is a long post title that is intentionally very long to see what happens'
-pubDate: 2025-03-14
-description: 'My second post description'
+pubDate: 2022-03-14
+description: 'My second post description is also very long so we can see what happens when one post has longer descriptions than another because i want the height of this one to be independent of other ones My second post description is also very long so we can see what happens when one post has longer descriptions than another because i want the height of this one to be independent of other ones'
 author: 'Praxis'
 image:
   url: '../assets/test.png'
