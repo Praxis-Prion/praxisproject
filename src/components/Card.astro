@@ -2,125 +2,194 @@
 // /sites/praxisproject/src/components/Card.astro
 const { linkCard = false } = Astro.props;
 ---
-<div class={`card ${linkCard ? 'card-link' : ''}`}>
+
+<div class={`card ${linkCard ? "card-link" : ""}`}>
   <slot />
 </div>
 
 <style>
-/* ========================
+  /* ========================
    Base card
    ======================== */
-.card {
-  background-color: rgba(200, 200, 255, 0.25);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid black;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  margin-top: 1rem;
-  break-inside: avoid;
-}
+  .card {
+    background-color: rgba(200, 200, 255, 0.25);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-top: 1rem;
+    break-inside: avoid;
+    line-height: 1.5;
+  }
 
-/* ========================
+  /* ========================
    Card typography
    ======================== */
-:global(.post-content h2),
-:global(.post-content h3),
-:global(.post-content p),
-:global(.post-content ul),
-:global(.post-content ol) {
-  padding-bottom: 1rem;
-}
 
-:global(.post-content h1),
-:global(.post-content h2) {
-  padding-top: 1.5rem;
-}
+  :global(.post-content h2),
+  :global(.post-content h3),
+  :global(.post-content h4),
+  :global(.post-content h5),
+  :global(.post-content h6),
+  :global(.post-content p),
+  :global(.post-content ul),
+  :global(.post-content ol) {
+    padding-bottom: 1rem;
+  }
 
-:global(.card li) {
-  margin-left: 1rem;
-}
+  :global(.card h1),
+  :global(.card h2),
+  :global(.card h3),
+  :global(.card h4),
+  :global(.card h5),
+  :global(.card h6) {
+    line-height: 1.25;
+  }
 
-/* ========================
+  :global(.card li) {
+    margin-left: 1rem;
+  }
+
+  /* blockquote styling */
+  :global(.post-content blockquote) {
+    border-left: 4px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    font-style: italic;
+    background-color: rgba(255, 255, 0, 0.1);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* inline code styling */
+  :global(.post-content code) {
+    background-color: rgba(0, 200, 0, 0.25);
+    color: #003300;
+    border-radius: 4px;
+    padding: 0.1rem 0;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+
+  /* code block container */
+  :global(.post-content pre) {
+    background-color: rgba(0, 0, 0, 0.66) !important;
+    border-left: 4px solid rgba(0, 0, 0, 0.5);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* text in code block container */
+  :global(.post-content pre code) {
+    background-color: transparent !important;
+    color: #303030;
+  }
+
+  /* fixes extra space before first line in code block */
+  :global(.post-content pre *) {
+    padding: 0;
+  }
+
+  /* ========================
    Card links and images
    ======================== */
-:global(.card a) {
-  text-decoration: none;
-  color: blue;
-}
 
-:global(.card a img) {
-  border-radius: 8px;
-  transition: opacity 0.2s ease;
-}
-
-:global(.card a img:hover) {
-  cursor: pointer;
-}
-
-:global(.card .tags) {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-:global(.card img) {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-:global(.card .float-left),
-:global(.card .float-right) {
-  float: none;
-  max-width: 100%;
-  margin: 0 0 1rem 0;
-}
-
-@media screen and (min-width: 768px) {
-  :global(.card .float-left) {
-    float: left;
-    max-width: 45%;
-    margin: 0 1rem 1rem 0;
+  /* global link style inside cards */
+  :global(.card a) {
+    text-decoration: none;
+    color: blue;
   }
 
+  :global(.card a img) {
+    border-radius: 8px;
+  }
+
+  :global(.card a img:hover) {
+    cursor: pointer;
+  }
+
+  :global(.card .tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  :global(.card img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* mobile: markdown images full width */
+  :global(.card .float-left),
   :global(.card .float-right) {
-    float: right;
-    max-width: 45%;
-    margin: 0 0 1rem 1rem;
+    float: none;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
   }
-}
 
-/* ========================
-   Link card variant
+  /* desktop: float images left or right with text wrap */
+  @media screen and (min-width: 768px) {
+    :global(.card .float-left) {
+      float: left;
+      max-width: 45%;
+      margin: 0 1rem 1rem 0;
+    }
+
+    :global(.card .float-right) {
+      float: right;
+      max-width: 45%;
+      margin: 0 0 1rem 1rem;
+    }
+  }
+
+  /* ========================
+   Link card variant - used for article/tag index cards
    ======================== */
-.card-link {
-  padding: 0;
-  overflow: hidden;
-}
 
-:global(.card-link a) {
-  display: block;
-  padding: 20px;
-}
+  /* remove card padding so the <a> tag covers the full clickable area */
+  .card-link {
+    padding: 0;
+    overflow: hidden;
+  }
 
-:global(.card-link h3) {
-  height: calc(1.4rem * 3);
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
+  /* <a> becomes the padding container so entire card is clickable */
+  :global(.card-link a) {
+    display: block;
+    padding: 20px;
+  }
 
-:global(.card-link p) {
-  height: calc(1.2rem * 5);
-  overflow: hidden;
-}
+  /* sets card title height */
+  :global(.card-link h3) {
+    height: calc(1.5rem * 3);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
 
-:global(.card-link span) {
-  color: black;
-}
+  /* sets card description height */
+  :global(.card-link p) {
+    height: calc(1.5rem * 5);
+    overflow: hidden;
+  }
 
-:global(.card-link a p) {
-  color: black;
-}
+  /* card date */
+  :global(.card-link span) {
+    color: #636363;
+  }
+
+  /* card description */
+  :global(.card-link a p) {
+    color: #636363;
+  }
+
+  /* card title */
+  :global(.card-link h3) {
+    color: #303030;
+  }
 </style>

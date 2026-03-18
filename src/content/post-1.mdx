@@ -11,15 +11,29 @@ tags: ["tech", "woodworking", "metalworking", "more", "tags", "here-to", "run-of
 import { Image } from 'astro:assets';
 import testImage from '../assets/test.png';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. **Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit.** Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+Lorem ipsum dolor sit amet, `consectetur` adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. `Aenean turpis ex, `dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. `Nunc tempus metus nec semper iaculis`. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. **Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit.** Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
 
-### Smaller Header
+## Header
+
+`this is some kind of code in an inline or something`
 
 Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. ***Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue.*** Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
 
 * List
 * List
 * List
+
+```c#
+i think this is a code block? = true
+i think this is a code block? = true
+i think this is a code block? = true
+i think this is a code block? = true
+i think this is a code block? = true
+```
+
+we will find out
+
+>here is a thing
 
 *Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.*
 
@@ -28,6 +42,8 @@ Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent ege
 3. list
 
 .import is the first word of this sentence
+
+### Smaller Header
 
 Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
 
@@ -41,6 +57,11 @@ Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
 
+>what does this do?
+>
+>does this even do anything?
+>>why doesn't this do anything?
+
 Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
 
 <Image src={testImage} alt="test" class="float-left" width={600} height={400} />
@@ -48,6 +69,8 @@ Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent ege
 Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
 
 Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+
+#### Even Smaller Header
 
 Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
 
@@ -57,8 +80,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidun
 
 Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
 
+##### Why is this even a header
+
 Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
 
 Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+
+###### really 6 levels huh?
 
 Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
