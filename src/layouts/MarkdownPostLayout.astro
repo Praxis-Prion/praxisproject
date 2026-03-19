@@ -63,7 +63,7 @@ const { frontmatter } = Astro.props;
     border-radius: 5px;
     padding: 0.2rem;
     margin-right: 0.2rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   /* ========================
@@ -94,7 +94,7 @@ const { frontmatter } = Astro.props;
   }
 
   /* inline code styling */
-  :global(.post-content) code {
+  :global(.post-content code) {
     background-color: rgba(0, 200, 0, 0.25);
     color: #003300;
     border-radius: 4px;
@@ -104,7 +104,7 @@ const { frontmatter } = Astro.props;
   }
 
   /* code block container */
-  :global(.post-content) pre {
+  :global(.post-content pre) {
     background-color: rgba(0, 0, 0, 0.66) !important;
     border-left: 4px solid rgba(0, 0, 0, 0.5);
     border-radius: 0 8px 8px 0;
@@ -115,18 +115,18 @@ const { frontmatter } = Astro.props;
   }
 
   /* text in code block container */
-  :global(.post-content) pre code {
+  :global(.post-content pre code) {
     background-color: transparent !important;
     color: #303030;
   }
 
   /* fixes extra space before first line in code block */
-  :global(.post-content) pre * {
+  :global(.post-content pre *) {
     padding: 0;
   }
 
   /* underline links in blog posts */
-  :global(.card .post-content) a {
+  :global(.card .post-content a) {
     text-decoration: underline;
   }
 </style>
