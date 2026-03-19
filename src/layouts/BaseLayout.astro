@@ -1,6 +1,6 @@
 ---
 // /sites/praxisproject/src/layouts/BaseLayout.astro
-const { pageTitle, pagefindIgnore = false } = Astro.props;
+const { pageTitle, pagefindIgnore = false, theme } = Astro.props;
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import "../styles/global.css";
@@ -14,7 +14,7 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
-	<body>
+	<body class={theme}>
 		<Header />
 		<main data-pagefind-ignore={pagefindIgnore || undefined}>
 			<h1>{pageTitle}</h1>

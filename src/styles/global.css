@@ -24,3 +24,39 @@ body {
 main {
   flex: 1;
 }
+
+/* woodworking theme */
+body.woodworking {
+  background-image: url('');
+  background-color: rgba(101, 67, 33, 0.5);
+}
+
+/* body.woodworking header {
+  background-color: rgba(101, 67, 33, 0.5);
+} */
+
+/* body.woodworking h1 {
+  background-color: rgba(101, 67, 33, 0.5);
+} */
+
+/* body.woodworking .card {
+  background-color: rgba(101, 67, 33, 0.5);
+} */
+
+/* gardening theme */
+body.gardening {
+  background-image: url('');
+  background-color: rgba(52, 128, 58, 0.5);
+}
+
+/* body.gardening header {
+  background-color: rgba(52, 128, 58, 0.5);
+} */
+
+/* body.gardening h1 {
+  background-color: rgba(52, 128, 58, 0.5);
+} */
+
+/* body.gardening .card {
+  background-color: rgba(52, 128, 58, 0.5);
+} */

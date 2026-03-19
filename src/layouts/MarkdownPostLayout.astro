@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title} theme={frontmatter.theme}>
   <Card>
     {
       frontmatter.image && (
