@@ -1,30 +1,42 @@
 ---
 // /sites/praxisproject/src/layouts/MarkdownPostLayout.astro
-import BaseLayout from './BaseLayout.astro';
-import Card from '../components/Card.astro';
-import { Image } from 'astro:assets';
+import BaseLayout from "./BaseLayout.astro";
+import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
 const { frontmatter } = Astro.props;
 ---
+
 <BaseLayout pageTitle={frontmatter.title}>
   <Card>
-    {frontmatter.image && (
-      <a href={frontmatter.image.url.src} target="_blank">
-        <Image
-          src={frontmatter.image.url}
-          alt={frontmatter.image.alt}
-          style="width: 100%; height: auto;"
-        />
-      </a>
-    )}
+    {
+      frontmatter.image && (
+        <a href={frontmatter.image.url.src} target="_blank">
+          <Image
+            src={frontmatter.image.url}
+            alt={frontmatter.image.alt}
+            style="width: 100%; height: auto;"
+          />
+        </a>
+      )
+    }
     <h2>{frontmatter.title}</h2>
-    <p>By <a href="../../about/">{frontmatter.author}</a> on {frontmatter.pubDate.toLocaleDateString()}</p>
+    <p>
+      By <a href="../../about/">{frontmatter.author}</a> on {
+        frontmatter.pubDate.toLocaleDateString()
+      }
+    </p>
     <!-- <p><em>{frontmatter.description}</em></p> -->
 
-      <div class="tags">Tags:
-        {frontmatter.tags.map((tag: string) => (
-          <span class="tag"><a href={`/tags/${tag}`}>{tag}</a></span>
-        ))}
-      </div>
+    <div class="tags">
+      Tags:
+      {
+        frontmatter.tags.map((tag: string) => (
+          <span class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </span>
+        ))
+      }
+    </div>
     <div class="post-content">
       <slot />
     </div>
@@ -32,6 +44,10 @@ const { frontmatter } = Astro.props;
 </BaseLayout>
 
 <style>
+  /* ========================
+   Markdown tags typography
+   ======================== */
+
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -47,5 +63,70 @@ const { frontmatter } = Astro.props;
     border-radius: 5px;
     padding: 0.2rem;
     margin-right: 0.2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ========================
+   Markdown post typography
+   ======================== */
+
+  :global(.post-content h2),
+  :global(.post-content h3),
+  :global(.post-content h4),
+  :global(.post-content h5),
+  :global(.post-content h6),
+  :global(.post-content p),
+  :global(.post-content ul),
+  :global(.post-content ol) {
+    padding-bottom: 1rem;
+  }
+
+  /* blockquote styling */
+  :global(.post-content blockquote) {
+    border-left: 4px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    font-style: italic;
+    background-color: rgba(255, 255, 0, 0.1);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* inline code styling */
+  :global(.post-content) code {
+    background-color: rgba(0, 200, 0, 0.25);
+    color: #003300;
+    border-radius: 4px;
+    padding: 0.1rem 0.1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+
+  /* code block container */
+  :global(.post-content) pre {
+    background-color: rgba(0, 0, 0, 0.66) !important;
+    border-left: 4px solid rgba(0, 0, 0, 0.5);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* text in code block container */
+  :global(.post-content) pre code {
+    background-color: transparent !important;
+    color: #303030;
+  }
+
+  /* fixes extra space before first line in code block */
+  :global(.post-content) pre * {
+    padding: 0;
+  }
+
+  /* underline links in blog posts */
+  :global(.card .post-content) a {
+    text-decoration: underline;
   }
 </style>
