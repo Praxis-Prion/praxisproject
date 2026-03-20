@@ -99,7 +99,7 @@ const { linkCard = false } = Astro.props;
    ======================== */
 
   /* remove card padding so the <a> tag covers the full clickable area */
-  .card-link {
+  :global(.card-link) {
     padding: 0;
     overflow: hidden;
   }

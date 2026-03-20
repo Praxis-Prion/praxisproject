@@ -27,36 +27,35 @@ main {
 
 /* woodworking theme */
 body.woodworking {
-  background-image: url('');
-  background-color: rgba(101, 67, 33, 0.5);
+  background-image: url('../assets/bg-wood.jpg');
 }
 
-/* body.woodworking header {
-  background-color: rgba(101, 67, 33, 0.5);
-} */
+body.woodworking header {
+  background-color: rgba(50, 25, 0, 0.5);
+}
 
-/* body.woodworking h1 {
-  background-color: rgba(101, 67, 33, 0.5);
-} */
+body.woodworking h1 {
+  background-color: rgba(101, 67, 33, 0.25);
+}
 
-/* body.woodworking .card {
-  background-color: rgba(101, 67, 33, 0.5);
-} */
+body.woodworking .card {
+  background-color: rgba(210, 180, 140, 0.25);
+}
 
 /* gardening theme */
 body.gardening {
-  background-image: url('');
-  background-color: rgba(52, 128, 58, 0.5);
+  background-image: url('../assets/bg-garden.jpg');
+  /* background-color: rgba(52, 128, 58, 0.5); */
 }
 
-/* body.gardening header {
-  background-color: rgba(52, 128, 58, 0.5);
-} */
+body.gardening header {
+  background-color: rgba(20, 50, 20, 0.5);
+}
 
-/* body.gardening h1 {
-  background-color: rgba(52, 128, 58, 0.5);
-} */
+body.gardening h1 {
+  background-color: rgba(34, 85, 34, 0.25);
+}
 
-/* body.gardening .card {
-  background-color: rgba(52, 128, 58, 0.5);
-} */
+body.gardening .card {
+  background-color: rgba(144, 190, 144, 0.25);
+}
