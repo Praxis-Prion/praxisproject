@@ -1,57 +1,258 @@
 ---
 // /sites/praxisproject/src/components/Header.astro
-import HeaderMenu from '../components/HeaderMenu.astro';
-import HeaderNav from '../components/HeaderNav.astro';
-import HeaderSearch from '../components/HeaderSearch.astro';
-// import { Image } from 'astro:assets';
-// import logo from '../assets/logo.png';
+// import HeaderMenu from "../components/HeaderMenu.astro";
+// import HeaderNav from "../components/HeaderNav.astro";
+// import HeaderSearch from "../components/HeaderSearch.astro";
+import Search from "astro-pagefind/components/Search";
 ---
+
 <header data-pagefind-ignore>
-  <div class="logo">
-    <!-- <a href="/"><Image src={logo} alt="Praxis Project" /></a> -->
-    <span><a href="/">Praxis Project</a></span>
+  <div class="header-content">
+    <a href="/" class="logo">praxis<span class="cursor">_</span>project</a>
+
+    <div class="menu">
+      <button
+        aria-expanded="false"
+        aria-controls="main-menu"
+        class="menu-button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="nav" id="main-menu">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/articles/">Articles</a>
+        <a href="/tags/">Tags</a>
+      </nav>
+    </div>
+
+    <div class="search">
+      <Search
+        id="search"
+        className="pagefind-ui"
+        uiOptions={{ showImages: false }}
+      />
+    </div>
   </div>
-  <HeaderMenu />
-  <HeaderNav />
-  <HeaderSearch />
 </header>
+
+<script>
+  import "../scripts/search.js";
+</script>
 
 <style>
   header {
-    display: flex;
     position: sticky;
     top: 0;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Safari */
-    background-color: rgba(0, 0, 50, 0.5);
-    align-items: center;
+    /* min-height: 60px; */
+    z-index: 100;
+    background: rgba(7, 13, 26, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-content {
+    display: flex;
     flex-wrap: wrap;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
-    border-bottom: 1px solid black;
+    align-items: center;
+    padding: 0 1rem;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  /* ─── HEADER - LOGO ─────────────────────────────────── */
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem 0;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .logo .cursor {
+    color: var(--blue-bright);
+  }
+
+  /* ─── HEADER - NAV LINKS ─────────────────────────────────── */
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+  }
+
+  nav a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-sec);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+    transition:
+      color 0.2s,
+      background 0.2s;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--blue-bright);
+    background: var(--blue-dim);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .nav {
+      display: flex;
+      align-self: stretch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* ─── HEADER - MENU BUTTON ─────────────────────────────────── */
+
+  .menu {
+    margin-left: auto;
+  }
+
+  /* nav links in column when menu is open */
+  :has(.menu-button[aria-expanded="true"]) .nav nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* controls .nav visibility when menu is open */
+  :has(.menu-button[aria-expanded="true"]) .nav {
+    display: block;
+    width: 100%;
+    order: 99;
+    text-align: center;
+  }
+
+  :has(.menu-button[aria-expanded="true"]) .nav nav a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* controls .search visibility when menu is open */
+  :has(.menu-button[aria-expanded="true"]) .search {
+    display: block;
+    width: 100%;
+    order: 100;
+  }
+
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0px 10px;
+  }
+
+  .menu-button span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu {
+      display: none;
+    }
+  }
+
+  /* ─── HEADER - SEARCH ─────────────────────────────────── */
+
+  .search {
+    display: none;
+    position: relative;
+    margin: 0.5rem 0;
+    padding: 0px;
+  }
+
+  :global(.pagefind-ui) {
+    position: relative;
+    /* --pagefind-ui-scale: 0.5; */
+    --pagefind-ui-primary: var(--blue-bright);
+    --pagefind-ui-text: var(--text);
+    --pagefind-ui-background: var(--bg-card);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-font: var(--mono);
+  }
+
+  :global(.pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden)) {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    overflow-y: auto;
+    padding: 0 0.5rem 2rem;
+    overscroll-behavior: contain;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     z-index: 1000;
   }
 
-  .logo {
-    display: flex;
+  /* search result link titles */
+  :global(.pagefind-ui .pagefind-ui__result-link) {
+    color: white !important;
   }
 
-  .logo span{
-    /* height: 50px; */
-    font-size: 2rem;
-    font-weight: bold;
-    padding-left: 5px;
-    padding-top: 5px;
-    transition: filter 0.5s ease, transform 0.5s ease;
+  /* search result body text */
+  :global(.pagefind-ui .pagefind-ui__result-excerpt) {
+    color: white;
   }
 
-  .logo span:hover {
-    filter: drop-shadow(0 0 8px rgba(255, 150, 100, 0.5));
-    transform: scale(1.01);
-  }
+  @media screen and (min-width: 768px) {
+    .search {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0;
+    }
 
-  .logo a {
-    color: #cfcfcf;
-    display: flex;
-    text-decoration: none;
+    /* search bar ui */
+    :global(.pagefind-ui__form .pagefind-ui__search-input) {
+      height: 40px !important;
+    }
+
+    /* search bar drawer */
+    :global(.pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden)) {
+      width: 100vw;
+      top: calc(100% + 2px);
+    }
+
+    /* magnifying glass icon */
+    :global(.pagefind-ui__form::before) {
+      top: 50% !important;
+      transform: translateY(-50%);
+    }
+
+    /* search bar clear text */
+    :global(.pagefind-ui__search-clear) {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      height: auto !important;
+    }
   }
 </style>

@@ -6,56 +6,211 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #070d1a;
+  --bg-surface: #0d1828;
+  --bg-card: #111e33;
+  --border: rgba(59, 130, 246, 0.12);
+  --border-hover: rgba(59, 130, 246, 0.35);
+  --blue: #3b82f6;
+  --blue-bright: #60a5fa;
+  --blue-dim: rgba(59, 130, 246, 0.12);
+  --text: #e2e8f0;
+  --text-sec: #94a3b8;
+  --text-muted: #4e657a;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --max-w: 1100px;
+}
+
 html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
+  scroll-behavior: smooth;
+  /*  set to header height so sections don't get hidden behind the sticky header when you jump to them */
+  scroll-padding-top: 64px;
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('../assets/bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
   flex: 1;
+  width: 100%;
 }
 
-/* woodworking theme */
-body.woodworking {
-  background-image: url('../assets/bg-wood.jpg');
+/* ─── HERO ───────────────────────────────────── */
+/*
+* BACKGROUND IMAGE 1 → set on #hero via:
+*   background-image: url('/path/to/your/image.jpg');
+* The overlay (.hero-overlay) dims it to keep text readable.
+*/
+
+#hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  /* background-image: url('../assets/bg.jpg'); */
+  background-color: var(--bg-surface);
+  background-size: cover;
+  background-position: center;
 }
 
-body.woodworking header {
-  background-color: rgba(50, 25, 0, 0.5);
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 35% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 33%), rgba(7, 13, 26, 0.8);
+  pointer-events: none;
 }
 
-body.woodworking h1 {
-  background-color: rgba(101, 67, 33, 0.25);
+/* #hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+} */
+
+.hero-inner {
+  position: relative;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+  width: 100%;
 }
 
-body.woodworking .card {
-  background-color: rgba(210, 180, 140, 0.25);
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--blue-bright);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  /* text-shadow: 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
 }
 
-/* gardening theme */
-body.gardening {
-  background-image: url('../assets/bg-garden.jpg');
-  /* background-color: rgba(52, 128, 58, 0.5); */
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to left, var(--blue-bright) 0%, transparent 100%);
+  text-shadow: 1px 1px 2px black;
 }
 
-body.gardening header {
-  background-color: rgba(20, 50, 20, 0.5);
+h1 {
+  font-family: var(--mono);
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.75rem;
+  /* text-shadow: 0px 0px 50px rgba(0,0,0,0.75), 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
 }
 
-body.gardening h1 {
-  background-color: rgba(34, 85, 34, 0.25);
+h1 .accent {
+  color: var(--blue-bright);
+
 }
 
-body.gardening .card {
-  background-color: rgba(144, 190, 144, 0.25);
+h1 .accent-cursor {
+  animation: flash 1s steps(1) infinite;
 }
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-sec);
+  max-width: 500px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+  /* text-shadow: 0px 0px 50px rgba(0,0,0,0.75), 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
+}
+
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid var(--blue);
+}
+
+.btn-primary:hover {
+  background: var(--blue-bright);
+  border-color: var(--blue-bright);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-sec);
+  border: 1px solid var(--border-hover);
+}
+
+.btn-outline:hover {
+  color: var(--text);
+  border-color: var(--blue-bright);
+}
+
+@keyframes flash {
+
+  0%,
+  100% {
+    opacity: 0.0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ─── SHARED SECTION STYLES ──────────────────── */
+
+/* ─── ABOUT ──────────────────────────────────── */
+/*
+* BACKGROUND IMAGE 2 → set on #about-section via:
+*   background-image: url('/path/to/your/image.jpg');
+*/
+
+/* ─── POSTS ──────────────────────────────────── */
+
+/* ─── PROJECTS ───────────────────────────────── */
+
+/* ─── TAGS ───────────────────────────────────── */
+
+/* ─── CONTACT ────────────────────────────────── */
+/*
+* BACKGROUND IMAGE 3 → set on #contact-section via:
+*   background-image: url('/path/to/your/image.jpg');
+*/
+
+/* ─── FOOTER ─────────────────────────────────── */

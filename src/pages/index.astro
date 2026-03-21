@@ -1,63 +1,29 @@
 ---
 // /sites/praxisproject/src/pages/index.astro
-import { getCollection } from "astro:content";
+// import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Card from "../components/Card.astro";
-import BlogPost from "../components/BlogPost.astro";
+// import Card from "../components/Card.astro";
+// import BlogPost from "../components/BlogPost.astro";
 
-const recentPosts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+// const recentPosts = (await getCollection("blog"))
+//   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+//   .slice(0, 3);
 
-const pageTitle = "Home";
+const pageTitle = "Praxis Project";
 ---
 
 <BaseLayout pageTitle={pageTitle} pagefindIgnore={true}>
-  <Card>
-    <p>Welcome message goes here.</p>
-    <br />
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis
-      consequat velit in interdum. Mauris ultrices sapien mauris, a sollicitudin
-      magna sollicitudin et. Proin semper fermentum lacus, sit amet hendrerit
-      libero aliquam non. Nunc ac auctor dolor. Nullam ut massa ligula. Vivamus
-      mi turpis, mattis eget vulputate vel, aliquet vel elit. Suspendisse
-      potenti. Nam porta egestas libero id dignissim.
-    </p>
-  </Card>
-
-  <Card>
-    <h2 style="text-align: center;">Recent Posts</h2>
-    <div class="recent-posts">
-      {
-        recentPosts.map((post) => (
-          <BlogPost
-            url={`/posts/${post.id}/`}
-            title={post.data.title}
-            image={post.data.image}
-            pubDate={post.data.pubDate}
-          />
-        ))
-      }
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">welcome</span>
+      <h1>Praxis<br><span class="accent">Project<span class="accent-cursor">_</span></span></h1>
+      <p class="hero-desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan aliquet purus, vitae hendrerit orci dignissim non.
+      </p>
+      <div class="btn-row">
+        <a href="#posts" class="btn btn-primary">Read Articles</a>
+        <a href="#about" class="btn btn-outline">About Me</a>
+      </div>
     </div>
-  </Card>
+  </section>
 </BaseLayout>
-
-<style>
-  .recent-posts {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    align-items: start;
-  }
-
-  :global(.recent-posts .card) {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  @media screen and (min-width: 768px) {
-    .recent-posts {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-</style>
