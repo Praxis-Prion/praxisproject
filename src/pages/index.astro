@@ -12,17 +12,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Praxis Project";
 ---
 
-<BaseLayout pageTitle={pageTitle} pagefindIgnore={true}>
+<BaseLayout pageTitle={pageTitle} pagefindIgnore={true} isHome={true}>
   <section id="hero">
     <div class="hero-inner">
-      <span class="eyebrow">welcome</span>
-      <h1>Praxis<br><span class="accent">Project<span class="accent-cursor">_</span></span></h1>
-      <p class="hero-desc">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan aliquet purus, vitae hendrerit orci dignissim non.
-      </p>
-      <div class="btn-row">
-        <a href="#posts" class="btn btn-primary">Read Articles</a>
-        <a href="#about" class="btn btn-outline">About Me</a>
+      <div class="section-content">
+        <span class="eyebrow">welcome</span>
+        <h1>
+          Praxis<br /><span class="accent"
+            >Project<span class="accent-cursor">_</span></span
+          >
+        </h1>
+        <p class="hero-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan
+          aliquet purus, vitae hendrerit orci dignissim non.
+        </p>
+        <div class="btn-row">
+          <a href="#posts" class="btn btn-primary">Read Articles</a>
+          <a href="#about" class="btn btn-outline">About Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-inner">
+      <div class="section-content">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="eyebrow">// about</span>
+            <h2>About me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis consequat velit in interdum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis consequat velit in interdum.</p>
+          </div>
+          <div class="about-photo">
+            <!-- photo goes here -->
+          </div>
+        </div>
       </div>
     </div>
   </section>

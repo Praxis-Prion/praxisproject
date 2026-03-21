@@ -1,9 +1,7 @@
 ---
 // /sites/praxisproject/src/components/Header.astro
-// import HeaderMenu from "../components/HeaderMenu.astro";
-// import HeaderNav from "../components/HeaderNav.astro";
-// import HeaderSearch from "../components/HeaderSearch.astro";
 import Search from "astro-pagefind/components/Search";
+const { isHome = false } = Astro.props;
 ---
 
 <header data-pagefind-ignore>
@@ -24,10 +22,10 @@ import Search from "astro-pagefind/components/Search";
 
     <div class="nav" id="main-menu">
       <nav>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/articles/">Articles</a>
-        <a href="/tags/">Tags</a>
+        <a href={isHome ? "#hero" : "/"}>Home</a>
+        <a href={isHome ? "#about" : "/about/"}>About</a>
+        <a href={isHome ? "#posts" : "/articles/"}>Articles</a>
+        <a href={isHome ? "#tags" : "/tags/"}>Tags</a>
       </nav>
     </div>
 

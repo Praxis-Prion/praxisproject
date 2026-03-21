@@ -31,9 +31,11 @@ html {
 
 body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   background: var(--bg);
+  /* background-image: url('../assets/bg.jpg'); */
+  /* background-attachment: fixed; */
   color: var(--text);
   font-family: var(--sans);
   font-size: 16px;
@@ -46,50 +48,52 @@ main {
   width: 100%;
 }
 
-/* ─── HERO ───────────────────────────────────── */
-/*
-* BACKGROUND IMAGE 1 → set on #hero via:
-*   background-image: url('/path/to/your/image.jpg');
-* The overlay (.hero-overlay) dims it to keep text readable.
-*/
+/* ─── SHARED SECTION STYLES ──────────────────── */
 
-#hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  /* background-image: url('../assets/bg.jpg'); */
-  background-color: var(--bg-surface);
-  background-size: cover;
-  background-position: center;
-}
-
-#hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 35% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 33%), rgba(7, 13, 26, 0.8);
-  pointer-events: none;
-}
-
-/* #hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: 1;
-} */
-
-.hero-inner {
-  position: relative;
+.section-content {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 8rem 2rem 6rem;
+  padding: 5rem 2rem;
   width: 100%;
+}
+
+section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+section:not(#hero) h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--blue);
+  margin-top: 0.75rem;
+  border-radius: 2px;
+}
+
+section:not(#hero) .eyebrow {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-family: var(--mono);
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.75rem;
+  /* text-shadow: 0px 0px 50px rgba(0,0,0,0.75), 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
+}
+
+h1 .accent {
+  color: var(--blue-bright);
+}
+
+h1 .accent-cursor {
+  animation: flash 1s steps(1) infinite;
 }
 
 .eyebrow {
@@ -105,32 +109,40 @@ main {
   /* text-shadow: 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
 }
 
-.eyebrow::before {
+/* ─── HERO ───────────────────────────────────── */
+
+#hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* overflow: hidden; */
+  background-image: url('../assets/bg.jpg');
+  background-color: var(--bg-surface);
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* background: radial-gradient(ellipse at 35% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 33%), rgba(7, 13, 26, 0.8); */
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-surface); /* or whatever blue you want */
+  z-index: 1;
+}
+
+#hero .eyebrow::before {
   content: '';
   display: block;
   width: 50px;
   height: 1px;
   background: linear-gradient(to left, var(--blue-bright) 0%, transparent 100%);
   text-shadow: 1px 1px 2px black;
-}
-
-h1 {
-  font-family: var(--mono);
-  font-size: clamp(2.75rem, 7vw, 5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.75rem;
-  /* text-shadow: 0px 0px 50px rgba(0,0,0,0.75), 0px 0px 25px rgba(0,0,0,0.75), 0px 0px 10px rgba(0,0,0,0.75); */
-}
-
-h1 .accent {
-  color: var(--blue-bright);
-
-}
-
-h1 .accent-cursor {
-  animation: flash 1s steps(1) infinite;
 }
 
 .hero-desc {
@@ -193,13 +205,58 @@ h1 .accent-cursor {
   }
 }
 
-/* ─── SHARED SECTION STYLES ──────────────────── */
-
 /* ─── ABOUT ──────────────────────────────────── */
-/*
-* BACKGROUND IMAGE 2 → set on #about-section via:
-*   background-image: url('/path/to/your/image.jpg');
-*/
+
+#about {
+  background-image: url('/images/about-bg.webp');
+  background-color: var(--bg-surface);
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 13, 26, 0.8);
+  pointer-events: none;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-family: var(--mono);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p {
+  color: var(--text-sec);
+  margin-bottom: 1.25rem;
+}
+
+.about-photo {
+  aspect-ratio: 0.9;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ─── POSTS ──────────────────────────────────── */
 
@@ -208,9 +265,5 @@ h1 .accent-cursor {
 /* ─── TAGS ───────────────────────────────────── */
 
 /* ─── CONTACT ────────────────────────────────── */
-/*
-* BACKGROUND IMAGE 3 → set on #contact-section via:
-*   background-image: url('/path/to/your/image.jpg');
-*/
 
 /* ─── FOOTER ─────────────────────────────────── */

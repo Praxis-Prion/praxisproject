@@ -1,6 +1,6 @@
 ---
 // /sites/praxisproject/src/layouts/BaseLayout.astro
-const { pageTitle, pagefindIgnore = false } = Astro.props;
+const { pageTitle, pagefindIgnore = false, isHome = false } = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
@@ -24,7 +24,7 @@ import "../styles/global.css";
 
 	<body>
 
-		<Header />
+		<Header isHome={isHome} />
 
 		<main data-pagefind-ignore={pagefindIgnore || undefined}>
 			<slot />
@@ -34,6 +34,7 @@ import "../styles/global.css";
 
 		<script>
 			import "../scripts/menu.js";
+			import "../scripts/scrollspy.js";
 		</script>
 	</body>
 </html>
