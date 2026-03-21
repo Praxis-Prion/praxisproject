@@ -1,13 +1,14 @@
 ---
 // /sites/praxisproject/src/pages/index.astro
-// import { getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 // import Card from "../components/Card.astro";
 // import BlogPost from "../components/BlogPost.astro";
 
-// const recentPosts = (await getCollection("blog"))
-//   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-//   .slice(0, 3);
+const recentPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
 
 const pageTitle = "Praxis Project";
 ---
@@ -41,13 +42,57 @@ const pageTitle = "Praxis Project";
           <div class="about-text">
             <span class="eyebrow">// about</span>
             <h2>About me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis consequat velit in interdum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis consequat velit in interdum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              iaculis consequat velit in interdum.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              iaculis consequat velit in interdum.
+            </p>
           </div>
           <div class="about-photo">
             <!-- photo goes here -->
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="posts">
+    <div class="posts-inner">
+      <div class="section-content">
+        <span class="eyebrow">// recent posts</span>
+        <h2>Latest Writing</h2>
+        <div class="posts-row">
+          {
+            recentPosts.map((post) => (
+              <a href={`/posts/${post.id}/`} class="post-card">
+                {post.data.image && (
+                  <div class="post-card-image">
+                    <Image
+                      src={post.data.image.url}
+                      alt={post.data.image.alt}
+                    />
+                  </div>
+                )}
+                <div class="post-card-body">
+                  <span class="post-date">
+                    {post.data.pubDate.toLocaleDateString()}
+                  </span>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                  <div class="post-tags">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <a href="/articles/" class="more-link">View all articles →</a>
       </div>
     </div>
   </section>

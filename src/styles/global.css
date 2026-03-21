@@ -21,21 +21,19 @@
   --mono: 'JetBrains Mono', monospace;
   --sans: 'DM Sans', system-ui, sans-serif;
   --max-w: 1100px;
+  --section-gap: 15rem;
 }
 
 html {
   scroll-behavior: smooth;
-  /*  set to header height so sections don't get hidden behind the sticky header when you jump to them */
-  scroll-padding-top: 64px;
+  scroll-padding-top: calc(var(--section-gap) + 60px);
 }
 
 body {
   min-height: 100vh;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
-  /* background-image: url('../assets/bg.jpg'); */
-  /* background-attachment: fixed; */
   color: var(--text);
   font-family: var(--sans);
   font-size: 16px;
@@ -53,7 +51,7 @@ main {
 .section-content {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 4rem 2rem;
   width: 100%;
 }
 
@@ -62,6 +60,10 @@ section {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+section:not(#hero) {
+  padding-bottom: var(--section-gap);
 }
 
 section:not(#hero) h2::after {
@@ -119,6 +121,7 @@ h1 .accent-cursor {
   /* overflow: hidden; */
   background-image: url('../assets/bg.jpg');
   background-color: var(--bg-surface);
+  padding: var(--section-gap) 0;
 }
 
 #hero::before {
@@ -208,21 +211,15 @@ h1 .accent-cursor {
 /* ─── ABOUT ──────────────────────────────────── */
 
 #about {
-  background-image: url('/images/about-bg.webp');
+  background-image: url('../assets/bg-wood.jpg');
   background-color: var(--bg-surface);
-}
-
-#about::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(7, 13, 26, 0.8);
-  pointer-events: none;
+  /* scroll-margin-top: calc(var(--section-gap) - 223px); */
 }
 
 .about-inner {
   position: relative;
   z-index: 1;
+  background-color: var(--bg-surface);
 }
 
 .about-grid {
@@ -259,6 +256,120 @@ h1 .accent-cursor {
 }
 
 /* ─── POSTS ──────────────────────────────────── */
+
+#posts {
+  background-image: url('/images/posts-bg.webp');
+  background-color: var(--bg-surface);
+}
+
+.posts-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.posts-row {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin: 0 -1rem; /* cancel out section-content padding */
+    /* scrollbar-width: none; */
+}
+
+.post-card {
+  flex-shrink: 0;
+  width: min(320px, 80vw);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+  margin-top: 1rem;
+}
+
+.post-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.post-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.post-date {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.post-card h3 {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.post-card p {
+  font-size: 0.85rem;
+  color: var(--text-sec);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  background: var(--blue-dim);
+  color: var(--blue-bright);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 4px;
+  padding: 0.18rem 0.45rem;
+}
+
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--blue-bright);
+  text-decoration: none;
+  margin-top: 2rem;
+  letter-spacing: 0.03em;
+  transition: gap 0.2s;
+}
+
+.more-link:hover {
+  text-decoration: underline;
+}
 
 /* ─── PROJECTS ───────────────────────────────── */
 
