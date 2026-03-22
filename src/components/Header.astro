@@ -23,8 +23,9 @@ const { isHome = false } = Astro.props;
     <div class="nav" id="main-menu">
       <nav>
         <a href={isHome ? "#hero" : "/"}>Home</a>
+        <a href={isHome ? "#recent-posts" : "/recent/"}>Recent</a>
+        <a href={isHome ? "#projects" : "/projects/"}>Projects</a>
         <a href={isHome ? "#about" : "/about/"}>About</a>
-        <a href={isHome ? "#posts" : "/articles/"}>Articles</a>
         <a href={isHome ? "#tags" : "/tags/"}>Tags</a>
       </nav>
     </div>
@@ -232,6 +233,9 @@ const { isHome = false } = Astro.props;
     /* search bar ui */
     :global(.pagefind-ui__form .pagefind-ui__search-input) {
       height: 40px !important;
+      min-width: 120px;
+      width: 20vw;
+      max-width: 280px;
     }
 
     /* search bar drawer */
