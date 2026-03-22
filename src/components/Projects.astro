@@ -24,7 +24,7 @@ const projectData = projects.map((project) => ({
 <section id="projects">
   <div class="projects-inner">
     <div class="section-content">
-      <span class="eyebrow">// projects</span>
+      <span class="eyebrow">// Behold my works</span>
       <h2>Projects</h2>
       <div class="projects-grid">
         {
@@ -68,7 +68,8 @@ const projectData = projects.map((project) => ({
 
   .projects-grid {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* 1 row on mobile */
+    grid-template-rows: 1fr;
     grid-auto-flow: column;
     grid-auto-columns: min(280px, 80vw);
     gap: 1.5rem;
@@ -76,6 +77,13 @@ const projectData = projects.map((project) => ({
     margin: 0 -1rem;
     padding: 1rem 0;
     scrollbar-color: var(--blue-bright) transparent;
+  }
+
+  /* switch to 2 rows on desktop */
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-rows: 1fr 1fr;
+    }
   }
 
   .project-card {
@@ -123,10 +131,5 @@ const projectData = projects.map((project) => ({
     color: var(--text-muted);
   }
 
-  /* switch to single row on mobile */
-  @media (max-width: 767px) {
-    .projects-grid {
-      grid-template-rows: 1fr;
-    }
-  }
+
 </style>
