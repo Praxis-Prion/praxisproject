@@ -1,6 +1,6 @@
 ---
 // /sites/praxisproject/src/layouts/BaseLayout.astro
-const { pageTitle, pagefindIgnore = false, isHome = false } = Astro.props;
+const { pageTitle, pagefindIgnore = false, isHome = false, bodyClass = ""} = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
@@ -22,7 +22,7 @@ import "../styles/global.css";
 		<title>{pageTitle}</title>
 	</head>
 
-	<body>
+	<body class={bodyClass}>
 		<Header isHome={isHome} />
 
 		<main data-pagefind-ignore={pagefindIgnore || undefined}>

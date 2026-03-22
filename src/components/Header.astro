@@ -23,10 +23,10 @@ const { isHome = false } = Astro.props;
     <div class="nav" id="main-menu">
       <nav>
         <a href={isHome ? "#hero" : "/"}>Home</a>
-        <a href={isHome ? "#recent-posts" : "/recent/"}>Recent</a>
-        <a href={isHome ? "#projects" : "/projects/"}>Projects</a>
-        <a href={isHome ? "#about" : "/about/"}>About</a>
-        <a href={isHome ? "#tags" : "/tags/"}>Tags</a>
+        <a href={isHome ? "#recent-posts" : "/#recent-posts"}>Recent</a>
+        <a href={isHome ? "#projects" : "/#projects"}>Projects</a>
+        <a href={isHome ? "#tags" : "/#tags"}>Tags</a>
+        <a href={isHome ? "#about" : "/#about"}>About</a>
       </nav>
     </div>
 
