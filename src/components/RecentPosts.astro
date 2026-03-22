@@ -1,0 +1,166 @@
+---
+// /sites/praxisproject/src/components/RecentPosts.astro
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+// Display the most recent 10 posts
+const recentPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 10);
+---
+
+<section id="recent-posts">
+  <div class="recent-posts-inner">
+    <div class="section-content">
+      <span class="eyebrow">// recent posts</span>
+      <h2>Latest Writings</h2>
+      <div class="recent-posts-row">
+        {
+          recentPosts.map((post) => (
+            <a href={`/posts/${post.id}/`} class="recent-post-card">
+              {post.data.image && (
+                <div class="recent-post-card-image">
+                  <Image src={post.data.image.url} alt={post.data.image.alt} />
+                </div>
+              )}
+              <div class="recent-post-card-body">
+                <span class="recent-post-date">
+                  {post.data.pubDate.toLocaleDateString()}
+                </span>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+                <div class="recent-post-tags">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="recent-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <a href="/articles/" class="recent-more-link">View all articles →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #recent-posts {
+    background-image: url("../assets/bg-wood.webp");
+    background-color: var(--bg-surface);
+    /* top left until a portrait background is made */
+    background-position: top left;
+  }
+
+  .recent-posts-inner {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-surface);
+  }
+
+  .recent-posts-row {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    margin: 0 -1rem;
+    scrollbar-color: var(--blue-bright) transparent;
+  }
+
+  .recent-post-card {
+    flex-shrink: 0;
+    width: min(320px, 80vw);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+    /* margin-top: 1rem; */
+  }
+
+  .recent-post-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+  }
+
+  .recent-post-card-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .recent-post-card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .recent-post-date {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .recent-post-card h3 {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  .recent-post-card p {
+    font-size: 0.85rem;
+    color: var(--text-sec);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .recent-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .recent-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    background: var(--blue-dim);
+    color: var(--blue-bright);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 4px;
+    padding: 0.18rem 0.45rem;
+  }
+
+  .recent-more-link {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--blue-bright);
+    text-decoration: none;
+    margin-top: 2rem;
+    letter-spacing: 0.03em;
+    transition: gap 0.2s;
+  }
+
+  .recent-more-link:hover {
+    text-decoration: underline;
+  }
+</style>

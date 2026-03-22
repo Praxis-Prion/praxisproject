@@ -1,0 +1,132 @@
+---
+// /sites/praxisproject/src/components/Projects.astro
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const allPosts = await getCollection("blog");
+
+const projects = [
+  ...new Set(
+    allPosts
+      .filter((post) => post.data.project)
+      .map((post) => post.data.project),
+  ),
+];
+
+const projectData = projects.map((project) => ({
+  name: project,
+  posts: allPosts
+    .filter((post) => post.data.project === project)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+}));
+---
+
+<section id="projects">
+  <div class="projects-inner">
+    <div class="section-content">
+      <span class="eyebrow">// projects</span>
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        {
+          projectData.map(({ name, posts }) => (
+            <a href={`/tags/${name}/`} class="project-card">
+              {posts[0]?.data.image && (
+                <div class="project-card-image">
+                  <Image
+                    src={posts[0].data.image.url}
+                    alt={posts[0].data.image.alt}
+                  />
+                </div>
+              )}
+              <div class="project-card-body">
+                <h3>{name}</h3>
+                <p>
+                  {posts.length} {posts.length === 1 ? "post" : "posts"}
+                </p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #projects {
+    background-image: url("../assets/bg-garden.webp");
+    background-color: var(--bg-surface);
+    /* top left until a portrait background is made */
+    background-position: top left;
+  }
+
+  .projects-inner {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-surface);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: min(280px, 80vw);
+    gap: 1.5rem;
+    overflow-x: auto;
+    margin: 0 -1rem;
+    padding: 1rem 0;
+    scrollbar-color: var(--blue-bright) transparent;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+    flex-shrink: 0;
+    width: min(280px, 80vw);
+  }
+
+  .project-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+  }
+
+  .project-card-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .project-card-body {
+    padding: 1.25rem;
+  }
+
+  .project-card h3 {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    text-transform: capitalize;
+  }
+
+  .project-card p {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+  }
+
+  /* switch to single row on mobile */
+  @media (max-width: 767px) {
+    .projects-grid {
+      grid-template-rows: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+// /sites/praxisproject/src/components/About.astro
+---
+
+<section id="about">
+  <div class="about-inner">
+    <div class="section-content">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="eyebrow">// about</span>
+          <h2>About me</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            iaculis consequat velit in interdum.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            iaculis consequat velit in interdum.
+          </p>
+        </div>
+        <div class="about-photo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about {
+    background-image: url("../assets/bg-garden.webp");
+    background-color: var(--bg-surface);
+    /* top right until a portrait background is made */
+    background-position: top right;
+    /* scroll-margin-top: calc(var(--section-gap) - 223px); */
+  }
+
+  .about-inner {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-surface);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-family: var(--mono);
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p {
+    color: var(--text-sec);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-photo {
+    aspect-ratio: 0.9;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

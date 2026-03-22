@@ -1,148 +1,22 @@
 ---
 // /sites/praxisproject/src/pages/index.astro
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import Hero from "../components/Hero.astro";
+import RecentPosts from "../components/RecentPosts.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
 // import Card from "../components/Card.astro";
 // import BlogPost from "../components/BlogPost.astro";
 
-// Display 10 posts in the recent posts section ───────────────────────────────────
-const recentPosts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 10);
 
-// Projects ──────────────────────────────────────────────────────────────────────
-const allPosts = await getCollection("blog");
-
-const projects = [
-  ...new Set(
-    allPosts
-      .filter((post) => post.data.project)
-      .map((post) => post.data.project),
-  ),
-];
-
-const projectData = projects.map((project) => ({
-  name: project,
-  posts: allPosts
-    .filter((post) => post.data.project === project)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
-}));
 
 // ───────────────────────────────────
 const pageTitle = "Praxis Project";
 ---
 
 <BaseLayout pageTitle={pageTitle} pagefindIgnore={true} isHome={true}>
-  <section id="hero">
-    <div class="hero-inner">
-      <div class="section-content">
-        <span class="eyebrow">welcome</span>
-        <h1>
-          Praxis<br /><span class="accent"
-            >Project<span class="accent-cursor">_</span></span
-          >
-        </h1>
-        <p class="hero-desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan
-          aliquet purus, vitae hendrerit orci dignissim non.
-        </p>
-        <div class="btn-row">
-          <a href="#posts" class="btn btn-primary">Read Articles</a>
-          <a href="#about" class="btn btn-outline">About Me</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="recent-posts">
-    <div class="recent-posts-inner">
-      <div class="section-content">
-        <span class="eyebrow">// recent posts</span>
-        <h2>Latest Writings</h2>
-        <div class="recent-posts-row">
-          {
-            recentPosts.map((post) => (
-              <a href={`/posts/${post.id}/`} class="recent-post-card">
-                {post.data.image && (
-                  <div class="recent-post-card-image">
-                    <Image
-                      src={post.data.image.url}
-                      alt={post.data.image.alt}
-                    />
-                  </div>
-                )}
-                <div class="recent-post-card-body">
-                  <span class="recent-post-date">
-                    {post.data.pubDate.toLocaleDateString()}
-                  </span>
-                  <h3>{post.data.title}</h3>
-                  <p>{post.data.description}</p>
-                  <div class="recent-post-tags">
-                    {post.data.tags.map((tag: string) => (
-                      <span class="recent-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-        <a href="/articles/" class="recent-more-link">View all articles →</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="projects-inner">
-      <div class="section-content">
-        <span class="eyebrow">// projects</span>
-        <h2>Projects</h2>
-        <div class="projects-grid">
-          {
-            projectData.map(({ name, posts }) => (
-              <a href={`/tags/${name}/`} class="project-card">
-                {posts[0]?.data.image && (
-                  <div class="project-card-image">
-                    <Image
-                      src={posts[0].data.image.url}
-                      alt={posts[0].data.image.alt}
-                    />
-                  </div>
-                )}
-                <div class="project-card-body">
-                  <h3>{name}</h3>
-                  <p>
-                    {posts.length} {posts.length === 1 ? "post" : "posts"}
-                  </p>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="about-inner">
-      <div class="section-content">
-        <div class="about-grid">
-          <div class="about-text">
-            <span class="eyebrow">// about</span>
-            <h2>About me</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              iaculis consequat velit in interdum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              iaculis consequat velit in interdum.
-            </p>
-          </div>
-          <div class="about-photo"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero />
+  <RecentPosts />
+  <Projects />
+  <About />
 </BaseLayout>
