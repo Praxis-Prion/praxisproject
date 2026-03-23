@@ -21,7 +21,7 @@ if (tocLinks.length > 0) {
       }
     });
   }, {
-    rootMargin: '-20% 0px -25% 0px'
+    rootMargin: '-20% 0px -20% 0px'
   });
 
   headingEls.forEach(el => observer.observe(el));

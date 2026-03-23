@@ -22,6 +22,7 @@
   --sans: 'DM Sans', system-ui, sans-serif;
   --max-w: 1100px;
   --section-gap: 15rem;
+  /* --section-gap: clamp(4rem, 10vh, 15rem); */
   /* ─── POST / LIGHT SURFACE VARS ─── */
   --post-surface: #162236;
   --post-card: #1a2a42;
@@ -33,7 +34,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--section-gap) + 60px);
+  scroll-padding-top: 60px;
+  /* brittle on different screen sizes */
+  /* scroll-padding-top: calc(var(--section-gap) + 60px); */
 }
 
 body {
@@ -58,7 +61,7 @@ main {
 .section-content {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   width: 100%;
 }
 

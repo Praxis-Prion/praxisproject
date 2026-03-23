@@ -54,7 +54,7 @@ const projectData = projects.map((project) => ({
 
 <style>
   #projects {
-    background-image: url("../assets/bg-wood.webp");
+    background-image: url("../assets/bg-garden.webp");
     background-color: var(--bg-surface);
     /* top left until a portrait background is made */
     background-position: top left;
@@ -84,6 +84,13 @@ const projectData = projects.map((project) => ({
   @media (min-width: 768px) {
     .projects-grid {
       grid-template-rows: 1fr 1fr;
+    }
+  }
+
+    /* switch to 2 rows on desktop */
+  @media (min-height: 600px) {
+    .projects-grid {
+      grid-template-rows: 1fr;
     }
   }
 
