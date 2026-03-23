@@ -9,7 +9,7 @@
 :root {
   --bg: #070d1a;
   --bg-surface: #0d1828;
-  --bg-card: #111e33;
+  --bg-card: #162236;
   --border: rgba(59, 130, 246, 0.12);
   --border-hover: rgba(59, 130, 246, 0.35);
   --blue: #3b82f6;
@@ -22,6 +22,13 @@
   --sans: 'DM Sans', system-ui, sans-serif;
   --max-w: 1100px;
   --section-gap: 15rem;
+  /* ─── POST / LIGHT SURFACE VARS ─── */
+  --post-surface: #162236;
+  --post-card: #1a2a42;
+  --post-border: rgba(59, 130, 246, 0.25);
+  --post-text: #e2e8f0;
+  --post-text-sec: #b8c8d8;
+  --post-text-muted: #6b8299;
 }
 
 html {
@@ -107,6 +114,7 @@ h1 .accent {
   margin-bottom: 2rem;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
 }
+
 /* ─── TAGS ───────────────────────────────────── */
 
 /* ─── CONTACT ────────────────────────────────── */
