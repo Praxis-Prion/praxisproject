@@ -7,7 +7,8 @@ const observer = new IntersectionObserver((entries) => {
       navLinks.forEach(link => {
         link.classList.toggle(
           'active',
-          link.getAttribute('href') === '#' + entry.target.id
+          link.getAttribute('href') === '#' + entry.target.id ||
+          link.getAttribute('href') === '/#' + entry.target.id
         );
       });
     }
@@ -24,7 +25,8 @@ if (firstSection) {
   navLinks.forEach(link => {
     link.classList.toggle(
       'active',
-      link.getAttribute('href') === '#' + firstSection.id
+      link.getAttribute('href') === '#' + firstSection.id ||
+      link.getAttribute('href') === '/#' + firstSection.id
     );
   });
 }

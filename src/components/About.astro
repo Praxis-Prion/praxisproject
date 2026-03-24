@@ -48,8 +48,14 @@ import profilePhoto from "../assets/aboutMe.webp";
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 0rem;
     align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      gap: 4rem;
+    }
   }
 
   .about-text h2 {
@@ -66,7 +72,6 @@ import profilePhoto from "../assets/aboutMe.webp";
   }
 
   .about-photo {
-    aspect-ratio: 0.9;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -74,11 +79,13 @@ import profilePhoto from "../assets/aboutMe.webp";
   }
 
   .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: auto;
+    height: 400px;
+    max-width: 100%;
+    object-fit: contain;
     object-position: center;
     display: block;
+    margin: 0 auto;
   }
 
   @media (max-width: 768px) {

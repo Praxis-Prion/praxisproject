@@ -1,7 +1,6 @@
 ---
 // /sites/praxisproject/src/components/Header.astro
 import Search from "astro-pagefind/components/Search";
-const { isHome = false } = Astro.props;
 ---
 
 <header data-pagefind-ignore>
@@ -22,11 +21,12 @@ const { isHome = false } = Astro.props;
 
     <div class="nav" id="main-menu">
       <nav>
-        <a href={isHome ? "#hero" : "/"}>Home</a>
-        <a href={isHome ? "#recent-posts" : "/#recent-posts"}>Recent</a>
-        <a href={isHome ? "#projects" : "/#projects"}>Projects</a>
-        <a href={isHome ? "#tags" : "/#tags"}>Tags</a>
-        <a href={isHome ? "#about" : "/#about"}>About</a>
+        <a href="/#hero">Home</a>
+        <a href="/#recent-posts">Recent</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#tags">Tags</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
       </nav>
     </div>
 

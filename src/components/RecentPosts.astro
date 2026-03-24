@@ -39,7 +39,7 @@ const recentPosts = (await getCollection("blog"))
           ))
         }
       </div>
-      <a href="/articles/" class="recent-more-link">View all articles →</a>
+      <a href="/articles/" class="btn btn-outline">View all articles →</a>
     </div>
   </div>
 </section>
@@ -64,7 +64,7 @@ const recentPosts = (await getCollection("blog"))
     gap: 1.5rem;
     overflow-x: auto;
     padding: 1rem 0;
-    margin: 0 -1rem;
+    margin: 1rem -1rem;
     scrollbar-color: var(--blue-bright) transparent;
   }
 
@@ -147,18 +147,6 @@ const recentPosts = (await getCollection("blog"))
     border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 4px;
     padding: 0.18rem 0.45rem;
-  }
-
-  .recent-more-link {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--blue-bright);
-    text-decoration: none;
-    margin-top: 2rem;
-    letter-spacing: 0.03em;
-    transition: gap 0.2s;
   }
 
   .recent-more-link:hover {
