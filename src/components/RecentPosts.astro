@@ -56,7 +56,12 @@ const recentPosts = (await getCollection("blog"))
     position: relative;
     z-index: 1;
     /* background-color: var(--bg-surface); */
-    background: linear-gradient(to right,rgba(0, 0, 0, 1) -100%,var(--bg-surface),rgba(0, 0, 0, 1) 200%);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) -100%,
+      var(--bg-surface),
+      rgba(0, 0, 0, 1) 200%
+    );
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 

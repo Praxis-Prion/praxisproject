@@ -12,4 +12,5 @@ export default defineConfig({
     }
   },
   integrations: [pagefind(), mdx()],
+  site: 'https://praxisproject.dev',
 });

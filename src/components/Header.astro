@@ -27,6 +27,8 @@ import Search from "astro-pagefind/components/Search";
         <a href="/#tags">Tags</a>
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
+        <span class="divider">|</span>
+        <a href="/articles" class="btn btn-outline">Articles</a>
       </nav>
     </div>
 
@@ -113,13 +115,30 @@ import Search from "astro-pagefind/components/Search";
     display: none;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 900px) {
     .nav {
       display: flex;
       align-self: stretch;
       margin-left: auto;
       margin-right: auto;
     }
+  }
+
+  .divider {
+    margin-right: 1rem;
+    display: none;
+  }
+
+  @media screen and (min-width: 900px) {
+    .divider {
+      display: block;
+      color: var(--text-sec);
+      font-weight: bold;
+    }
+  }
+
+  .nav .btn-outline {
+    color: var(--text);
   }
 
   /* ─── HEADER - MENU BUTTON ─────────────────────────────────── */
@@ -172,7 +191,7 @@ import Search from "astro-pagefind/components/Search";
     border-radius: 3px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 900px) {
     .menu {
       display: none;
     }
@@ -222,7 +241,7 @@ import Search from "astro-pagefind/components/Search";
     color: white;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 900px) {
     .search {
       display: flex;
       justify-content: flex-start;

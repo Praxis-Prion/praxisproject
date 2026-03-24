@@ -2,12 +2,20 @@
 // /sites/praxisproject/src/components/Footer.astro
 ---
 
-<footer>· © 2026 Praxis Project · Built with Astro</footer>
+<footer>
+  · © 2026 Praxis Project · Built with Astro ·
+  <a href="/rss.xml">RSS</a>
+</footer>
 
 <style>
   footer {
     /* background-color: var(--bg-surface); */
-    background: linear-gradient(to right,rgba(0, 0, 0, 1) -100%,var(--bg-surface),rgba(0, 0, 0, 1) 200%);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) -100%,
+      var(--bg-surface),
+      rgba(0, 0, 0, 1) 200%
+    );
     color: var(--text-muted);
     text-align: center;
     font-family: var(--mono);
