@@ -59,7 +59,8 @@ const tags = Object.entries(tagCounts).sort(
   .tags-inner {
     position: relative;
     z-index: 1;
-    background-color: var(--bg-surface);
+    /* background-color: var(--bg-surface); */
+    background: linear-gradient(to right,rgba(0, 0, 0, 1) -100%,var(--bg-surface),rgba(0, 0, 0, 1) 200%);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
@@ -69,7 +70,9 @@ const tags = Object.entries(tagCounts).sort(
     gap: 0.6rem;
     margin-top: 1.5rem;
     align-items: flex-end;
-
+    padding: 1rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border-hover);
   }
 
   .tag-pill {

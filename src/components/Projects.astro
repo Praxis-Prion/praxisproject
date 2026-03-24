@@ -63,7 +63,8 @@ const projectData = projects.map((project) => ({
   .projects-inner {
     position: relative;
     z-index: 1;
-    background-color: var(--bg-surface);
+    /* background-color: var(--bg-surface); */
+    background: linear-gradient(to right,rgba(0, 0, 0, 1) -100%,var(--bg-surface),rgba(0, 0, 0, 1) 200%);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
@@ -75,9 +76,11 @@ const projectData = projects.map((project) => ({
     grid-auto-columns: min(280px, 80vw);
     gap: 1.5rem;
     overflow-x: auto;
-    margin: 0 -1rem;
-    padding: 1rem 0;
+    margin: 1rem 0rem 0rem -1rem;
+    padding: 1rem 1rem;
     scrollbar-color: var(--blue-bright) transparent;
+    background-color: var(--bg);
+    border: 1px solid var(--border-hover);
   }
 
   /* switch to 2 rows on desktop */
@@ -87,8 +90,8 @@ const projectData = projects.map((project) => ({
     }
   }
 
-    /* switch to 2 rows on desktop */
-  @media (min-height: 600px) {
+    /* switch to 1 rows on smaller screens */
+  @media (min-height: 1080px) {
     .projects-grid {
       grid-template-rows: 1fr;
     }
