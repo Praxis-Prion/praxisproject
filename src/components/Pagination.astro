@@ -1,0 +1,47 @@
+---
+// praxisproject/src/components/Pagination.astro
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  currentPage: number;
+  lastPage: number;
+}
+
+const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
+---
+
+<nav class="pagination">
+  {
+    prevUrl && (
+      <a href={prevUrl} class="btn btn-outline">
+        ← Previous
+      </a>
+    )
+  }
+  <span class="pagination-info">
+    Page {currentPage} of {lastPage}
+  </span>
+  {
+    nextUrl && (
+      <a href={nextUrl} class="btn btn-outline">
+        Next →
+      </a>
+    )
+  }
+</nav>
+
+<style>
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--post-border);
+  }
+
+  .pagination-info {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--post-text-muted);
+  }
+</style>

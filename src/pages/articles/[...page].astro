@@ -1,118 +1,39 @@
 ---
-// /sites/praxisproject/src/pages/articles/[...page].astro
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
+// praxisproject/src/pages/articles/[...page].astro
+import PostListLayout from "../../layouts/ArticleListLayout.astro";
+import TagCloud from "../../components/TagCloud.astro";
+import {
+  getAllPosts,
+  getTagCounts,
+  getSortedTags,
+} from "../../scripts/articleData.ts";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
-  const allPosts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  const allPosts = await getAllPosts();
   return paginate(allPosts, { pageSize: 10 });
 }
 
 const { page } = Astro.props as { page: Page<any> };
-
-const allPosts = await getCollection("blog");
-
-// Add a counter for how many posts there are per tag
-const tagCounts = allPosts
-  .flatMap((post) => post.data.tags)
-  .reduce(
-    (acc, tag) => {
-      acc[tag] = (acc[tag] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
-// Adds a size class to tags depending on number of post breakpoints
-const getTier = (count: number) => {
-  if (count >= 4) return "lg";
-  if (count >= 2) return "md";
-  return "sm";
-};
-
-// Sort posts by highest number of posts in a tag first, then alphabetically
-const tags = Object.entries(tagCounts).sort(
-  (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
-);
-
+const tagCounts = await getTagCounts();
+const tags = getSortedTags(tagCounts);
 const pageTitle = `Articles — Page ${page.currentPage}`;
 ---
 
-<BaseLayout pageTitle={pageTitle} pagefindIgnore={true}>
-  <div class="articles-page">
-    <div class="articles-header">
-      <h2>All Articles</h2>
-      <h3>Browse Posts by Tag</h3>
-      <div class="articles-tags-cloud">
-        {
-          tags.map(([tag, count]) => (
-            <a
-              href={`/tags/${tag}/`}
-              class={`tag-pill tag-pill--${getTier(count)}`}
-            >
-              {tag} <span class="tag-count">{count}</span>
-            </a>
-          ))
-        }
-      </div>
+<PostListLayout {page} {pageTitle}>
+  <div slot="header">
+    <h2>All Articles</h2>
+    <h3>Browse Posts by Tag</h3>
 
-      <p class="articles-count">
-        {page.total}
-        {page.total === 1 ? "article" : "articles"}
-      </p>
-    </div>
+    {/* Tags sized by post frequency — no active highlight */}
+    <TagCloud tags={tags} showTiers={true} />
 
-    <div class="articles-list">
-      {
-        page.data.map((post) => (
-          <a href={`/posts/${post.id}/`} class="article-strip">
-            {post.data.image && (
-              <div class="article-strip-image">
-                <Image src={post.data.image.url} alt={post.data.image.alt} />
-              </div>
-            )}
-            <div class="article-strip-body">
-              <span class="article-strip-date">
-                {post.data.pubDate.toLocaleDateString()}
-              </span>
-              <h2>{post.data.title}</h2>
-              <p>{post.data.description}</p>
-              <div class="article-strip-tags">
-                {post.data.tags.map((tag: string) => (
-                  <span class="article-tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-
-    <nav class="pagination">
-      {
-        page.url.prev && (
-          <a href={page.url.prev} class="btn btn-outline">
-            ← Previous
-          </a>
-        )
-      }
-      <span class="pagination-info">
-        Page {page.currentPage} of {page.lastPage}
-      </span>
-      {
-        page.url.next && (
-          <a href={page.url.next} class="btn btn-outline">
-            Next →
-          </a>
-        )
-      }
-    </nav>
+    <p class="post-count">
+      {page.total}
+      {page.total === 1 ? "article" : "articles"}
+    </p>
   </div>
-</BaseLayout>
+</PostListLayout>
 
 <style>
   body {
@@ -122,271 +43,5 @@ const pageTitle = `Articles — Page ${page.currentPage}`;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-  }
-
-  .articles-page {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    margin-top: -64px;
-    padding: 1rem;
-    padding-top: calc(2rem + 64px);
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 1) -150%,
-      var(--post-surface),
-      rgba(0, 0, 0, 1) 250%
-    );
-    box-shadow:
-      -10px 0 30px rgba(0, 0, 0, 0.4),
-      10px 0 30px rgba(0, 0, 0, 0.4);
-  }
-
-  @media (min-width: 768px) {
-    .articles-page {
-      border-left: 3px solid var(--post-border);
-      border-right: 3px solid var(--post-border);
-      padding: 2rem;
-      padding-top: calc(2rem + 64px);
-    }
-  }
-
-  .articles-header {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--post-border);
-    padding-bottom: 1rem;
-  }
-
-  .articles-header h2 {
-    font-family: var(--mono);
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: var(--post-text);
-    /* margin-bottom: 0.25rem; */
-  }
-
-  .articles-header h2::after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 2px;
-    background: var(--blue);
-    margin-bottom: 0.5rem;
-    border-radius: 2px;
-  }
-
-  .articles-header h3 {
-    color: var(--text-sec);
-  }
-
-  .articles-header p {
-    margin-top: 1rem;
-  }
-
-  .articles-count {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--post-text-muted);
-  }
-
-  /* ─── STRIPS ─────────────────────────── */
-
-  .articles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: var(--bg);
-    border: 1px solid var(--border-hover);
-  }
-
-  .article-strip {
-    display: flex;
-    gap: 1.25rem;
-    text-decoration: none;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1) -200%,
-      var(--post-card),
-      rgba(0, 0, 0, 1) 300%
-    );
-    border: 1px solid var(--post-border);
-    border-radius: 10px;
-    overflow: hidden;
-    transition:
-      border-color 0.2s,
-      transform 0.2s;
-    align-items: center;
-  }
-
-  .article-strip:hover {
-    border-color: var(--blue-bright);
-    transform: translateX(4px);
-  }
-
-  .article-strip-image {
-    flex-shrink: 0;
-    width: 140px;
-  }
-
-  .article-strip-image img {
-    width: 140px;
-    height: 100%;
-    min-height: 120px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .article-strip-body {
-    padding: 1rem 1rem 1rem 0;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .article-strip-date {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--post-text-muted);
-    display: block;
-    margin-bottom: 0.35rem;
-  }
-
-  .article-strip-body h2 {
-    font-family: var(--mono);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--post-text);
-    line-height: 1.3;
-    margin-bottom: 0.4rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .article-strip-body p {
-    font-size: 0.85rem;
-    color: var(--post-text-sec);
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .article-strip-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .article-tag {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    background: var(--blue-dim);
-    color: var(--blue-bright);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .article-strip-image {
-      width: 100px;
-    }
-
-    .article-strip-image img {
-      width: 100px;
-      min-height: 100px;
-    }
-  }
-
-  /* ─── PAGINATION ─────────────────────── */
-
-  .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 2rem;
-    border-top: 1px solid var(--post-border);
-  }
-
-  .pagination-info {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--post-text-muted);
-  }
-
-  /* ─── TAGS ─────────────────────── */
-
-  .articles-tags-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: flex-end;
-    padding: 0.5rem;
-    background-color: var(--bg);
-    border: 1px solid var(--border-hover);
-    max-height: 13.5rem; /* 5 rows mobile */
-    overflow-y: auto;
-    scrollbar-width: thick;
-    scrollbar-color: var(--blue-bright) transparent;
-  }
-
-  @media (min-width: 768px) {
-    .articles-tags-cloud {
-      max-height: 8.25rem; /* 3 rows desktop */
-    }
-  }
-
-  .tag-pill {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-    background: var(--bg-card);
-    color: var(--text-sec);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.25rem 0.5rem;
-    text-decoration: none;
-    transition:
-      color 0.2s,
-      border-color 0.2s,
-      background 0.2s;
-  }
-
-  .tag-pill:hover {
-    color: var(--blue-bright);
-    border-color: var(--blue-bright);
-    background: var(--blue-dim);
-  }
-
-  .tag-count {
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    margin-left: 0.25rem;
-  }
-
-  .tag-pill--sm {
-    color: var(--text-muted);
-    border-color: var(--border);
-  }
-
-  .tag-pill--md {
-    color: var(--text-sec);
-    border-color: var(--border);
-  }
-
-  .tag-pill--lg {
-    color: var(--text);
-    border-color: var(--border-hover);
-  }
-
-  .tag-pill--sm:hover,
-  .tag-pill--md:hover,
-  .tag-pill--lg:hover {
-    border-color: var(--blue-bright);
-    background: var(--blue-dim);
   }
 </style>

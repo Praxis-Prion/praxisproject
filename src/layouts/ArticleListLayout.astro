@@ -1,0 +1,109 @@
+---
+// /sites/praxisproject/src/layouts/ArticleListLayout.astro
+// Shared page shell for any paginated post list (all articles, tag filter, etc.)
+// Pages pass their unique header content via the "header" slot and control
+// the background via the bodyClass prop.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Pagination from "../components/Pagination.astro";
+import ArticleList from "../components/ArticleList.astro";
+import type { Page } from "astro";
+
+interface Props {
+  pageTitle: string;
+  page: Page<any>;
+  bodyClass?: string;
+}
+
+const { pageTitle, page, bodyClass } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle} pagefindIgnore={true} bodyClass={bodyClass}>
+  <div class="article-list-page">
+    {/* Each page defines its own heading, tag cloud, and article count here */}
+    <div class="article-list-header">
+      <slot name="header" />
+    </div>
+
+    {/* Shared article list — always renders page.data the same way */}
+    <ArticleList posts={page.data} />
+
+    {/* Shared pagination — driven by Astro's page object */}
+    <Pagination
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .article-list-page {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    margin-top: -64px;
+    padding: 1rem;
+    padding-top: calc(1rem + 64px);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) -150%,
+      var(--post-surface),
+      rgba(0, 0, 0, 1) 250%
+    );
+    box-shadow:
+      -10px 0 30px rgba(0, 0, 0, 0.4),
+      10px 0 30px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (min-width: 768px) {
+    .article-list-page {
+      border-left: 3px solid var(--post-border);
+      border-right: 3px solid var(--post-border);
+      padding: 1rem 2rem;
+      padding-top: calc(1rem + 64px);
+    }
+  }
+
+  .article-list-header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--post-border);
+    padding-bottom: 1rem;
+  }
+
+  /* ── Shared heading style used by both pages ─────────────────────────────
+     Applied via the global modifier below so it reaches into the slot.      */
+  .article-list-header :global(h2) {
+    font-family: var(--mono);
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Decorative underline — each page colours it via a CSS variable */
+  .article-list-header :global(h2)::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--blue-bright);
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+  }
+
+  .article-list-header :global(h3) {
+    color: var(--text-sec);
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+  }
+
+  .article-list-header :global(p) {
+    margin-top: 1rem;
+  }
+
+  /* Small count line below the tag cloud */
+  .article-list-header :global(.post-count) {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--post-text-muted);
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+// praxisproject/src/components/TagCloud.astro
+import { getTagTier } from "../scripts/articleData.ts";
+
+interface Props {
+  tags: [string, number][]; // [tag, count] pairs, pre-sorted
+  activeTag?: string; // tags page: highlights current tag
+  showTiers?: boolean; // articles page: size classes by post count
+}
+
+const { tags, activeTag, showTiers = false } = Astro.props;
+---
+
+<div class="tag-cloud">
+  {
+    tags.map(([tag, count]) => {
+      const isActive = tag === activeTag;
+      const tierClass = showTiers ? `tag-pill--${getTagTier(count)}` : "";
+      const activeClass = isActive ? "tag-pill--active" : "";
+      return (
+        <a
+          href={`/tags/${tag}/`}
+          class={`tag-pill ${tierClass} ${activeClass}`.trim()}
+        >
+          {tag} <span class="tag-count">{count}</span>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: flex-end;
+    padding: 0.5rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border-hover);
+    max-height: 8.25rem;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    scrollbar-color: var(--blue-bright) transparent;
+    margin-top: 1rem;
+  }
+
+  .tag-pill {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    background: var(--bg-card);
+    color: var(--text-sec);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.75rem;
+    text-decoration: none;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
+  }
+
+  .tag-pill:hover,
+  .tag-pill--active {
+    color: var(--blue-bright);
+    border-color: var(--blue-bright);
+    background: var(--blue-dim);
+  }
+
+  .tag-pill--active {
+    border-color: var(--blue);
+  }
+
+  /* Tier styles — only applied when showTiers=true */
+  .tag-pill--sm {
+    color: var(--text-muted);
+    border-color: var(--border);
+  }
+  .tag-pill--md {
+    color: var(--text-sec);
+    border-color: var(--border);
+  }
+  .tag-pill--lg {
+    color: var(--text);
+    border-color: var(--border-hover);
+  }
+
+  .tag-pill--sm:hover,
+  .tag-pill--md:hover,
+  .tag-pill--lg:hover {
+    border-color: var(--blue-bright);
+    background: var(--blue-dim);
+  }
+
+  .tag-count {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    margin-left: 0.25rem;
+  }
+</style>

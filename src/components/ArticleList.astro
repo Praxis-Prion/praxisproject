@@ -1,0 +1,40 @@
+---
+// praxisproject/src/components/ArticleList.astro
+// Renders the containing list box and maps over a page's posts,
+// delegating each individual row to ArticleStrip.
+import ArticleStrip from "./ArticleStrip.astro";
+
+interface Props {
+  posts: any[]; // page.data from Astro's paginate()
+}
+
+const { posts } = Astro.props;
+---
+
+{/* Shared list container */}
+<div class="articles-list">
+  {
+    posts.map((post) => (
+      <ArticleStrip
+        url={`/posts/${post.id}/`}
+        title={post.data.title}
+        description={post.data.description}
+        pubDate={post.data.pubDate}
+        image={post.data.image}
+        tags={post.data.tags}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border-hover);
+  }
+</style>
