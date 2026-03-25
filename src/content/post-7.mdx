@@ -1,104 +1,90 @@
 ---
-title: 'Click me to win'
-pubDate: 2026-03-14
-description: 'All your wildest dreams will come true'
+title: 'I Built a Dashboard So I Could Watch Myself Not Use It'
+pubDate: 2024-05-18
+description: 'visibility achieved, purpose unclear'
 author: 'Praxis'
 image:
-  url: '../assets/aboutMe.webp'
-  alt: 'placeholder'
-tags: ["homelab", "projects", "workshop", "gardening"]
-project: 'not a project'
-theme: 'gardening'
+  url: '../assets/test.png'
+  alt: 'beautiful unused dashboard'
+tags: ["homelab", "monitoring", "dashboards", "observability", "grafana", "metrics"]
+project: 'visibility-stack'
+theme: 'infrastructure'
 ---
 import { Image } from 'astro:assets';
 import testImage from '../assets/test.png';
 
-Lorem ipsum dolor sit amet, `consectetur` adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, `dictum quis scelerisque` sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. `Nunc tempus metus nec semper iaculis`. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. **Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit.** Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+It started with a simple thought: I should be able to see what’s going on. Not because anything was wrong, but because something could be wrong, and I wouldn’t know. This was unacceptable. So I decided to build a dashboard. Just one. Clean. Minimal. Useful.
 
-<a href={testImage.src} target="_blank">
-  <Image src={testImage} alt="test" class="float-middle" />
-</a>
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="first dashboard" class="float-middle" /> </a>
+visibility increases questions
 
-## Header
+At first it was basic. CPU usage. Memory. Disk. The essentials. Then I thought, what about per-service metrics? That seemed important. Then, what about historical trends? Also important. Before long, I was tracking things I didn’t fully understand but felt strongly about observing.
 
----
+more graphs
 
-`this is some kind of code in an inline or something`
+if you can see it
 
-[do you even link bro?](https://dev.praxisproject.dev)
+you can worry about it
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. ***Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue.*** Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+the graph phase
 
-* List
-* List
-* List
+Now there are panels. Many panels. Each one displays a line. The lines move. Sometimes up. Sometimes down. I watch them like they might reveal something if I stare long enough.
 
-```c#
-i think this is a code block? = true
-i think this is a code block? = true
-i think this is a code block? = true
-i think this is a code block? = true
-i think this is a code block? = true
-```
+green line good
+red line concerning
+yellow line ???
 
-we will find out
+why did it spike at 3am
 
->here is a thing
+interpretation layer missing
 
-*Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.*
+The data is there. So much data. Beautiful, precise, completely context-free data. I can tell you exactly what happened, but not whether it matters.
 
-1. list
-2. list
-3. list
+cpu at 12%
 
-.import is the first word of this sentence
+is that normal
 
-### Smaller Header
+what is normal
 
-Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="graphs everywhere" class="float-left" /> </a>
 
-<a href={testImage.src} target="_blank">
-  <Image src={testImage} alt="test" class="float-left" />
-</a>
+I add alerts. Thresholds. Notifications. If something goes above a number, I want to know. I do not know why I chose that number.
 
-Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="alerting system" class="float-right" /> </a>
+define threshold
+wait
+be notified
+question threshold
+refinement loop
 
-<a href={testImage.src} target="_blank">
-  <Image src={testImage} alt="test" class="float-right" />
-</a>
+I tweak panels. Resize them. Rename them. Rearrange them into something that feels meaningful. The layout evolves. The meaning does not.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+maybe group by service
+maybe group by resource
+maybe group by color
 
->what does this do?
->
->does this even do anything?
->>why doesn't this do anything?
+this one looks important
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+usage reality
 
-<Image src={testImage} alt="test" class="float-left" />
+After all this, I step back and admire the dashboard. It is comprehensive. Informative. Elegant.
 
-Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
+Then I close it.
 
-Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+Days pass. Everything runs. I do not check the dashboard. Nothing alerts me, which is either good or suspicious.
 
-#### Even Smaller Header
+brief return
 
-Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
+At some point I open it again. The graphs are still moving. The numbers are still changing. It feels like walking into a room where something has been happening the whole time without you.
 
-<Image src={testImage} alt="test" class="float-left" />
+you missed nothing
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+or everything
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+conclusion (observed)
 
-##### Why is this even a header
+The system is visible now. Completely observable. Every metric accounted for.
 
-Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
+And yet, somehow, I still don’t know what’s going on.
 
-Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
-
-###### really 6 levels huh?
-
-Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
-## Header
+<Image src={testImage} alt="final dashboard" class="float-middle" />

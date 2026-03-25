@@ -1,21 +1,176 @@
 ---
-title: 'My 6th Post'
-pubDate: 2025-03-14
-description: 'My fourth post description'
+title: 'The tale of 2 computes'
+pubDate: 2024-05-15
+description: 'help computer'
 author: 'Praxis'
 image:
   url: '../assets/test.png'
-  alt: 'placeholder'
-tags: ["homelab", "projects", "workshop"]
-project: 'a project i believe'
+  alt: 'harvested produce staring back'
+tags: ["homelab", "self-hosting", "cpu", "memory", "harddrive",]
+project: ''
+theme: ''
 ---
+import { Image } from 'astro:assets';
+import testImage from '../assets/test.png';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+It finally happened. After all the watering, checking, adjusting, and quietly doubting, something actually grew. Not just a little—enough. Enough to pick. Enough to hold in my hand and think this came from the dirt I was staring at.
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="the harvest" class="float-middle" /> </a>
+immediate realization
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+I did not plan for this part.
 
-Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
+Growing it? Yes. Monitoring it? Absolutely. Harvesting it? That felt like a distant, hypothetical outcome. But now it’s here, sitting in front of me, and I’m realizing I skipped an important step.
 
-Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+what now
 
-Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
+    this was the goal
+
+        now what is the goal
+
+evaluation phase
+
+I inspect it carefully.
+
+    looks correct
+
+    smells like something
+
+    feels real
+
+this appears to be food
+hesitation
+
+There is a pause. A long one. I consider all the effort that went into this. The time. The attention. The overthinking. Turning it into something else feels… irreversible.
+
+    what if I do it wrong
+
+        you grew it
+
+            that doesn’t help
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="holding produce" class="float-left" /> </a>
+
+I look at it from different angles like it might suggest its purpose.
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="deep consideration" class="float-right" /> </a>
+
+    harvest
+
+    admire
+
+    delay
+
+external input
+
+I could look up recipes. I could plan something. I could turn this into a meal.
+
+    simple preparation
+
+    minimal effort
+
+    let it shine
+
+or I could just keep looking at it
+resolution (partial)
+
+Eventually, I do something. Not elaborate. Not perfect. Just enough to say I followed through. It tastes… good. Different. Familiar but earned.
+
+    this was worth it
+
+        I think
+
+aftermath
+
+Now the plant is still there. Still growing. This wasn’t a one-time event. There will be more.
+conclusion (cyclical)
+
+I set out to grow something, and I did. Now I have to keep doing something with it.
+
+And somehow—
+
+that feels like the harder part.
+<Image src={testImage} alt="after harvest" class="float-middle" />alt: 'dns definitely working'
+tags: ["homelab", "computron", "code", "coding", "java"]
+project: 'home-lab'
+
+
+It was supposed to be quick. DNS wasn’t resolving internally the way I wanted, and I thought, I’ll just fix that real fast. A small tweak. A tiny adjustment. Nothing major. I opened the config, made a change, restarted the service, and immediately lost resolution for everything.
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="dns setup" class="float-middle" /> </a>
+the part where it used to work
+
+The most unsettling part is that it was working. Not perfectly, but well enough. Now it’s not working at all, which feels like progress in the wrong direction.
+
+debugging begins
+
+it worked five minutes ago
+
+that is no longer relevant
+
+verification loop
+
+So I check things. Carefully. Methodically. Repeatedly.
+
+check resolver config
+check upstream
+check local overrides
+check /etc/hosts just in case
+check the same things again but with more suspicion
+
+why does one device resolve and another does not
+
+cache is a concept
+
+Now I remember: DNS caches exist. Everywhere. In the system, in the browser, in the router, possibly in the walls. I flush one cache. It changes nothing. I flush another. Something changes, but not in a way that helps.
+
+cached result
+
+cached mistake
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="cache confusion" class="float-left" /> </a>
+
+At this point I am no longer sure what is real. I resolve a domain and get one IP. I resolve it again and get a different one. Both are technically correct, which is the worst outcome.
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="inconsistent results" class="float-right" /> </a>
+query dns
+doubt result
+query again
+logs (cryptic)
+
+The logs are active. They contain information. Possibly even useful information. Lines scroll by that look important, but none of them say “here is the problem.”
+
+query received
+forwarded
+cached
+something happened
+
+this should mean something
+
+it does
+
+just not to you
+
+temporary fixes that feel permanent
+
+I add a manual entry. It works. Of course it works. It bypasses everything I just spent time configuring. I tell myself it’s temporary. It is not temporary.
+
+clarity (brief, fleeting)
+
+Eventually, something clicks. One setting. One line. One small detail that explains everything. I fix it. Restart. Test again.
+
+It works.
+
+Everything works.
+
+conclusion (fragile)
+
+The system is stable again. Resolution is correct. Services respond. The network feels coherent.
+
+But I know the truth.
+
+I will forget what fixed it.
+
+And next time, I will say the same thing:
+
+I’ll just fix DNS real quick
+
+<Image src={testImage} alt="resolved state" class="float-middle" />

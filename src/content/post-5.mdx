@@ -1,21 +1,90 @@
 ---
-title: 'My 5th Post'
-pubDate: 2024-03-14
-description: 'My fourth post description'
+title: 'I Opened One Port and Now I Have Opinions'
+pubDate: 2024-05-06
+description: 'a calm introduction to self-hosting that escalated immediately'
 author: 'Praxis'
 image:
   url: '../assets/test.png'
-  alt: 'placeholder'
-tags: ["homelab", "projects", "workshop"]
-project: 'another project'
+  alt: 'rack of questionable decisions'
+tags: ["homelab", "self-hosting", "homelab", "networking", "dns", "services"]
+project: 'home-lab'
+theme: 'infrastructure'
 ---
+import { Image } from 'astro:assets';
+import testImage from '../assets/test.png';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tincidunt dui, ut volutpat mauris. Donec condimentum lectus ut sem varius finibus quis at felis. Aenean turpis ex, dictum quis scelerisque sed, bibendum nec augue. Curabitur sed mollis lacus, sed lobortis mi. Nunc tempus metus nec semper iaculis. Donec dolor ligula, pellentesque et vulputate a, mollis a orci. Donec posuere cursus neque. Vestibulum sit amet molestie ligula. Fusce eleifend elit ut nisl feugiat hendrerit. Sed eget magna pretium, aliquet ante eget, vestibulum ex. Quisque ut leo pellentesque, sollicitudin mauris sed, dictum massa. Morbi sagittis massa vel erat dignissim lobortis. Nulla consectetur vitae augue sed tempor. Sed posuere ex libero, vel pretium magna lobortis nec.
+It started with one port. Just one. I told myself, I only need access to this one service. Simple. Clean. Responsible. I forwarded it, refreshed the page, and it worked. That was the moment everything changed. Something unlocked in my brain that cannot be relocked.
 
-Nulla condimentum convallis lorem, ac mollis libero. Sed a dui leo. Praesent eget mauris diam. Quisque blandit ut risus eu consequat. Sed aliquam feugiat feugiat. Mauris commodo convallis urna vel feugiat. Aenean accumsan, orci eu sagittis egestas, sapien sem luctus lacus, et pretium metus erat quis augue. Maecenas tincidunt tincidunt odio eget gravida. Nulla eleifend, tellus in laoreet tristique, nisl leo egestas erat, et ultrices sem velit id orci.
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="first success" class="float-middle" /> </a>
+the first success was a mistake
 
-Mauris vehicula elit id dui pulvinar, non fringilla tortor faucibus. Sed interdum lacinia lorem, at malesuada odio hendrerit sed. Quisque vitae iaculis ligula, eget egestas quam. Duis sodales mauris a augue sodales pellentesque. Phasellus dictum molestie quam eget placerat. Ut gravida elit metus, et consectetur nunc convallis in. Ut est mauris, placerat ac lorem vitae, efficitur facilisis urna.
+The service loaded instantly from outside my network. No VPN, no friction, just pure access. I sat there for a second thinking this is too easy. Naturally, I added another service. And another. Suddenly I have opinions about reverse proxies.
 
-Donec orci nisi, rhoncus vitae mauris quis, finibus pretium orci. Quisque eros magna, pharetra quis volutpat nec, mattis in nisl. Integer tempus nec lectus ut cursus. Vestibulum mi tellus, sagittis et mauris quis, rutrum maximus lectus. Aliquam eget enim sit amet odio faucibus sagittis in id dolor. Pellentesque blandit dolor ac massa egestas mattis. Ut scelerisque tellus magna, at commodo libero volutpat quis. Nam gravida placerat sapien, eget ornare enim porta sed.
+what could go wrong
 
-Nam pulvinar lectus vitae diam efficitur sollicitudin. Donec egestas, libero at fringilla mollis, justo felis congue eros, et cursus sapien orci in nisl. Proin sem eros, suscipit commodo ante sed, convallis sodales diam. Morbi vehicula, nisl sed dictum imperdiet, ante arcu euismod ipsum, eu vehicula tellus risus sit amet enim. Sed condimentum gravida libero nec eleifend. Nulla pellentesque quis leo eget malesuada. Phasellus tristique mauris non imperdiet laoreet. Curabitur gravida, metus pretium posuere sodales, massa urna condimentum ex, cursus iaculis leo dui a purus. Sed tincidunt, turpis et feugiat tincidunt, libero libero ultricies nisl, at auctor neque orci vitae dolor.
+just expose one more
+
+just one more
+
+dns phase (irreversible)
+
+Now I need names. IP addresses are beneath me. I want cool-service.domain.dev, not 192.168.1.42:3000. So I set up DNS. It works. Immediately I distrust it.
+
+flush cache
+check again
+check from phone
+check from laptop
+check from neighbor’s wifi (hypothetically)
+
+why is it sometimes working
+
+the container spiral
+
+Everything becomes a container. I no longer install things—I compose them. YAML files multiply. I open one and think who wrote this and then realize it was me, five minutes ago.
+
+container is up
+
+is it though
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="containers everywhere" class="float-left" /> </a>
+
+Logs are now my primary form of communication. They speak in fragments. Warnings. Occasional truths. I read them like tea leaves, looking for meaning that may or may not exist.
+
+<a href={testImage.src} target="_blank"> <Image src={testImage} alt="log reading ritual" class="float-right" /> </a>
+start container
+check logs
+restart container
+check logs again
+security awareness (sudden and intense)
+
+At some point it hits me: this is exposed to the internet. Real internet. The one with bots. I watch the logs again. There are requests I did not make.
+
+who are you
+why are you here
+what do you want
+
+deny all
+
+access denied
+
+they keep trying
+
+optimization that solves nothing
+
+Now I care about performance. Not because anything is slow, but because it could be faster. I tweak configs. I restart services. I measure things that did not need measuring.
+
+The system is now more complex and exactly as fast as before.
+
+philosophical shift
+
+Self-hosting is no longer about the service. The service is incidental. The real goal is control. Visibility. The ability to say I know exactly how this works even when that is objectively untrue.
+
+final state (unstable)
+
+Everything is running. Mostly. The services are accessible. The DNS resolves. The containers stay up. The logs are quiet—for now.
+
+And yet, I know—
+
+I will open another port.
+
+<Image src={testImage} alt="final state" class="float-middle" />
