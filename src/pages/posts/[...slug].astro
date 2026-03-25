@@ -93,7 +93,9 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     <!-- Main layout -->
     <div class="post-layout">
       <article class="post-content">
-        <a href="/articles/" class="back-link btn btn-outline">← Back to articles</a>
+        <a href="/articles/" class="back-link btn btn-outline"
+          >← Back to articles</a
+        >
         <div class="prose">
           <Content />
         </div>
@@ -216,8 +218,15 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     padding: 1rem;
     padding-top: calc(2rem + 64px); /* compensate for the negative margin */
     background-color: var(--post-surface);
-    background: linear-gradient(to right,rgba(0, 0, 0, 1) -150%,var(--post-surface),rgba(0, 0, 0, 1) 250%);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4), 10px 0 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) -150%,
+      var(--post-surface),
+      rgba(0, 0, 0, 1) 250%
+    );
+    box-shadow:
+      -10px 0 30px rgba(0, 0, 0, 0.4),
+      10px 0 30px rgba(0, 0, 0, 0.4);
   }
 
   @media (min-width: 768px) {
@@ -305,7 +314,7 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
 
   .tag-pill:hover {
     color: var(--blue-bright);
-    border-color: var(--border-hover);
+    border-color: var(--blue-bright);
     background: var(--blue-dim);
   }
 

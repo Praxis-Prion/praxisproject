@@ -96,7 +96,7 @@ const projectData = projects.map((project) => ({
   }
 
   /* switch to 1 rows on smaller screens */
-  @media (min-height: 600px) {
+  @media (max-height: 600px) {
     .projects-grid {
       grid-template-rows: 1fr;
     }
@@ -118,7 +118,7 @@ const projectData = projects.map((project) => ({
   }
 
   .project-card:hover {
-    border-color: var(--border-hover);
+    border-color: var(--blue-bright);
     transform: translateY(-3px);
   }
 
