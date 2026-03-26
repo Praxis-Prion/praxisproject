@@ -68,10 +68,6 @@ const { tags, activeTag, showTiers = false } = Astro.props;
     background: var(--blue-dim);
   }
 
-  .tag-pill--active {
-    border-color: var(--blue);
-  }
-
   /* Tier styles — only applied when showTiers=true */
   .tag-pill--sm {
     color: var(--text-muted);
@@ -97,5 +93,10 @@ const { tags, activeTag, showTiers = false } = Astro.props;
     color: var(--text-muted);
     font-size: 0.65rem;
     margin-left: 0.25rem;
+  }
+
+  .tag-pill--active {
+    border-color: var(--blue-bright);
+    color: var(--blue-bright)
   }
 </style>

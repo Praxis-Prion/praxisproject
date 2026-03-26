@@ -1,40 +1,75 @@
 ---
 // /sites/praxisproject/src/pages/posts/[...slug].astro
+
+// Astro content APIs:
+// - getCollection: fetch all entries from a content collection (your "blog")
+// - render: converts a markdown/content entry into a component + metadata (like headings)
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 
+// tells Astro which dynamic routes to generate for [...slug]
 export async function getStaticPaths() {
+  // Get all blog posts from content collection
   const posts = await getCollection("blog");
+
+  // For each post, create a route like /posts/{id}/
   return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
+    params: { slug: post.id }, // used in [...slug]
+    props: { post }, // passed into the page as Astro.props
   }));
 }
 
+// Pull the current post from props (injected by getStaticPaths)
 const { post } = Astro.props;
+
+// Render the markdown/content into:
+// - Content: a component you can render in the template
+// - headings: extracted headings (used for TOC)
 const { Content, headings } = await render(post);
 
-// Related posts — project first, then tag overlap
+// ───────────────────────────────────────
+// RELATED POSTS LOGIC
+// ───────────────────────────────────────
+
+// Fetch all posts again so we can compare against the current one
 const allPosts = await getCollection("blog");
+
+// Remove the current post (you don’t want to recommend itself)
 const otherPosts = allPosts.filter((p) => p.id !== post.id);
 
+// Score posts based on relevance
 const scoredPosts = otherPosts
   .map((p) => {
+    // Strong signal: same project
     const sameProject =
       post.data.project && p.data.project === post.data.project;
+    // Weaker signal: overlapping tags
     const sharedTags = p.data.tags.filter((t) =>
       post.data.tags.includes(t),
     ).length;
+    // Final score:
+    // - same project gets a HUGE boost (1000)
+    // - each shared tag adds +1
     return { post: p, score: (sameProject ? 1000 : 0) + sharedTags };
   })
+  // Sort highest score first (most relevant first)
   .sort((a, b) => b.score - a.score)
+  // Only keep top 4
   .slice(0, 4);
 
+// Strip out just the post objects for rendering
 const relatedPosts = scoredPosts.map((s) => s.post);
 
-// Theme → bodyClass
+// ───────────────────────────────────────
+// THEME HANDLING
+// ───────────────────────────────────────
+
+// If a post defines a theme (e.g. "woodworking"),
+// generate a class like "theme-woodworking"
 const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
+// This gets passed into BaseLayout and applied to <body>
+// letting you swap backgrounds/styles per post
 ---
 
 <BaseLayout pageTitle={post.data.title} bodyClass={bodyClass}>

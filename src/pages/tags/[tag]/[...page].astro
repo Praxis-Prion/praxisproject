@@ -28,11 +28,12 @@ const pageTitle = `#${tag}`;
 <PostListLayout {page} {pageTitle} bodyClass="tag-body">
   <div slot="header">
     <h2>
-      Posts tagged with:<span style="color: var(--blue-bright)"> #{tag}</span>
+      Tag:<span style="color: var(--blue-bright)"> #</span>{tag}
+      <h3>Browse Posts by Tag</h3>
     </h2>
 
     {/* Full tag cloud with current tag highlighted */}
-    <TagCloud tags={tags} activeTag={tag} />
+    <TagCloud tags={tags} activeTag={tag} showTiers={true} />
 
     <p class="post-count">
       {page.total}
@@ -50,4 +51,6 @@ const pageTitle = `#${tag}`;
     background-attachment: fixed;
     background-position: center;
   }
+
+
 </style>

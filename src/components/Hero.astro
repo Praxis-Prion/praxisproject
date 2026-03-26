@@ -29,19 +29,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* overflow: hidden; */
     background-image: url("../assets/bg.webp");
     background-color: var(--bg-surface);
-    /* padding: var(--section-gap) 0; */
     padding: clamp(2rem, 8vh, 15rem) 0;
     padding-bottom: 15rem;
   }
 
+  /* overlay for hero background if needed */
   #hero::before {
     content: "";
     position: absolute;
     inset: 0;
-
     pointer-events: none;
   }
 
