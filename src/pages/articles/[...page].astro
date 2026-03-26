@@ -1,6 +1,6 @@
 ---
 // praxisproject/src/pages/articles/[...page].astro
-import PostListLayout from "../../layouts/ArticleListLayout.astro";
+import ArticleListLayout from "../../layouts/ArticleListLayout.astro";
 import TagCloud from "../../components/TagCloud.astro";
 import {
   getAllPosts,
@@ -20,7 +20,7 @@ const tags = getSortedTags(tagCounts);
 const pageTitle = `Articles — Page ${page.currentPage}`;
 ---
 
-<PostListLayout {page} {pageTitle}>
+<ArticleListLayout {page} {pageTitle}>
   <div slot="header">
     <h2>All Articles</h2>
     <h3>Browse Posts by Tag</h3>
@@ -33,7 +33,7 @@ const pageTitle = `Articles — Page ${page.currentPage}`;
       {page.total === 1 ? "article" : "articles"}
     </p>
   </div>
-</PostListLayout>
+</ArticleListLayout>
 
 <style>
   body {

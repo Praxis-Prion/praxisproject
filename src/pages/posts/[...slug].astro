@@ -232,18 +232,12 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("../../assets/bg-wood.webp");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
   }
 
   body.theme-gardening {
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("../../assets/bg-garden.webp");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
   }
 
   .post-page {
@@ -262,6 +256,8 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     box-shadow:
       -10px 0 30px rgba(0, 0, 0, 0.4),
       10px 0 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
   }
 
   @media (min-width: 768px) {
