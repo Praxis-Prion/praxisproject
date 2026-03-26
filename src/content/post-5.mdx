@@ -16,7 +16,7 @@ import testImage from '../assets/test.png';
 It started with one port. Just one. I told myself, I only need access to this one service. Simple. Clean. Responsible. I forwarded it, refreshed the page, and it worked. That was the moment everything changed. Something unlocked in my brain that cannot be relocked.
 
 <a href={testImage.src} target="_blank"> <Image src={testImage} alt="first success" class="float-middle" /> </a>
-the first success was a mistake
+## the first success was a mistake
 
 The service loaded instantly from outside my network. No VPN, no friction, just pure access. I sat there for a second thinking this is too easy. Naturally, I added another service. And another. Suddenly I have opinions about reverse proxies.
 
@@ -26,7 +26,7 @@ just expose one more
 
 just one more
 
-dns phase (irreversible)
+## dns phase (irreversible)
 
 Now I need names. IP addresses are beneath me. I want cool-service.domain.dev, not 192.168.1.42:3000. So I set up DNS. It works. Immediately I distrust it.
 
@@ -38,7 +38,7 @@ check from neighbor’s wifi (hypothetically)
 
 why is it sometimes working
 
-the container spiral
+### the container spiral
 
 Everything becomes a container. I no longer install things—I compose them. YAML files multiply. I open one and think who wrote this and then realize it was me, five minutes ago.
 
@@ -55,7 +55,7 @@ start container
 check logs
 restart container
 check logs again
-security awareness (sudden and intense)
+### security awareness (sudden and intense)
 
 At some point it hits me: this is exposed to the internet. Real internet. The one with bots. I watch the logs again. There are requests I did not make.
 
@@ -75,7 +75,7 @@ Now I care about performance. Not because anything is slow, but because it could
 
 The system is now more complex and exactly as fast as before.
 
-philosophical shift
+## philosophical shift
 
 Self-hosting is no longer about the service. The service is incidental. The real goal is control. Visibility. The ability to say I know exactly how this works even when that is objectively untrue.
 
