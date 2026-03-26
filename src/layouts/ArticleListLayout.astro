@@ -84,42 +84,67 @@ const { pageTitle, page, bodyClass } = Astro.props;
   }
 
   /* Decorative underline — each page colours it via a CSS variable */
-.article-list-header :global(h2)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    var(--blue-bright) 50%,
-    transparent 100%
-  );
-  background-repeat: no-repeat;
-  animation: scan 3s linear infinite alternate;
-}
+  .article-list-header :global(h2)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      var(--blue-bright) 50%,
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+    animation: scan 2s linear infinite alternate;
+  }
 
-@keyframes scan {
-  0% {
-    background-position: 0% 0;
-    background-size: 70px 100%;
+    @keyframes scan {
+      0% {
+        background-position: 0% 0;
+        background-size: 80px 100%;
+      }
+      10% {
+        background-position: 0% 0;
+        background-size: 100px 100%;
+      }
+      90% {
+        background-position: 100% 0;
+        background-size: 100px 100%;
+      }
+      100% {
+        background-position: 100% 0;
+        background-size: 80px 100%;
+      }
+    }
+
+  @media screen and (min-width: 800px) {
+    .article-list-header :global(h2)::after {
+      animation: scan 3s linear infinite alternate;
+    }
+
+    @keyframes scan {
+      0% {
+        background-position: 0% 0;
+        background-size: 70px 100%;
+      }
+      10% {
+        background-position: 0% 0;
+        background-size: 100px 100%;
+      }
+      90% {
+        background-position: 100% 0;
+        background-size: 100px 100%;
+      }
+      100% {
+        background-position: 100% 0;
+        background-size: 70px 100%;
+      }
+    }
   }
-  10% {
-    background-position: 0% 0;
-    background-size: 100px 100%;
-  }
-  90% {
-    background-position: 100% 0;
-    background-size: 100px 100%;
-  }
-  100% {
-    background-position: 100% 0;
-    background-size: 70px 100%;
-  }
-}
 
   .article-list-header :global(h3) {
     color: var(--text-sec);
