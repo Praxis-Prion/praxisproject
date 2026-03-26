@@ -1,7 +1,7 @@
 ---
 // praxisproject/src/pages/tags/[tag]/[...page].astro
 import { getCollection } from "astro:content";
-import PostListLayout from "../../../layouts/ArticleListLayout.astro";
+import ArticleListLayout from "../../../layouts/ArticleListLayout.astro";
 import TagCloud from "../../../components/TagCloud.astro";
 import { getTagCounts, getSortedTags } from "../../../scripts/articleData.ts";
 import type { Page } from "astro";
@@ -25,7 +25,7 @@ const tags = getSortedTags(tagCounts);
 const pageTitle = `#${tag}`;
 ---
 
-<PostListLayout {page} {pageTitle} bodyClass="tag-body">
+<ArticleListLayout {page} {pageTitle} bodyClass="tag-body">
   <div slot="header">
     <h2>
       Tag:<span style="color: var(--blue-bright)"> #</span>{tag}
@@ -40,7 +40,7 @@ const pageTitle = `#${tag}`;
       {page.total === 1 ? "article" : "articles"}
     </p>
   </div>
-</PostListLayout>
+</ArticleListLayout>
 
 <style>
   body.tag-body {
@@ -51,6 +51,4 @@ const pageTitle = `#${tag}`;
     background-attachment: fixed;
     background-position: center;
   }
-
-
 </style>
