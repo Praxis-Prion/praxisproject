@@ -4,10 +4,12 @@ const { pageTitle, pagefindIgnore = false, bodyClass = ""} = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <html lang="en">
 	<head>
+		<ClientRouter />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -23,7 +25,7 @@ import "../styles/global.css";
 	</head>
 
 	<body class={bodyClass}>
-		<Header />
+		<Header transition:persist />
 
 		<main data-pagefind-ignore={pagefindIgnore || undefined}>
 			<slot />
