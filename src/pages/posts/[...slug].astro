@@ -854,9 +854,27 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
   }
 </style>
 
-<script
-  data-isso="https://isso.praxisproject.dev/"
-  src="https://isso.praxisproject.dev/js/embed.min.js"></script>
+<script>
+  function initIsso() {
+    // Remove any existing isso script to force a fresh load
+    const existing = document.querySelector('script[data-isso]');
+    if (existing) existing.remove();
+
+    // Remove existing isso thread content so it re-renders
+    const thread = document.getElementById('isso-thread');
+    if (thread) thread.innerHTML = '<noscript>Javascript needs to be activated to view comments.</noscript>';
+
+    // Only inject on post pages that have the thread element
+    if (!thread) return;
+
+    const script = document.createElement('script');
+    script.setAttribute('data-isso', 'https://isso.praxisproject.dev/');
+    script.src = 'https://isso.praxisproject.dev/js/embed.min.js';
+    document.body.appendChild(script);
+  }
+
+  document.addEventListener('astro:page-load', initIsso);
+</script>
 
 <script>
   import "../../scripts/scrollspy-toc.js";
