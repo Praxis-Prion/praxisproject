@@ -133,6 +133,11 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
         >
         <div class="prose">
           <Content />
+          <section id="isso-thread" data-title={post.data.title}>
+            <noscript
+              >Javascript needs to be activated to view comments.</noscript
+            >
+          </section>
         </div>
       </article>
 
@@ -754,6 +759,104 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     }
   }
 </style>
+
+<style is:global>
+  /* ─── ISSO COMMENTS ─────────────────── */
+
+  #isso-thread {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--post-border);
+  }
+
+  #isso-thread * {
+    font-family: var(--sans);
+    color: var(--post-text-sec);
+  }
+
+  #isso-thread input,
+  #isso-thread textarea {
+    background: var(--post-card);
+    border: 1px solid var(--post-border);
+    border-radius: 6px;
+    color: var(--post-text);
+    font-family: var(--sans);
+    padding: 0.5rem 0.75rem;
+  }
+
+  #isso-thread input:focus,
+  #isso-thread textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+
+  #isso-thread input[type="submit"] {
+    background: var(--blue);
+    color: #fff;
+    border: 1px solid var(--blue);
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #isso-thread input[type="submit"]:hover {
+    background: var(--blue-bright);
+    border-color: var(--blue-bright);
+  }
+
+  #isso-thread .isso-comment {
+    border-top: 1px solid var(--post-border);
+    padding: 1rem 0;
+    background: none;
+  }
+
+  #isso-thread .isso-comment-header .author {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--post-text);
+    font-weight: 600;
+  }
+
+  #isso-thread .isso-comment-header .date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--post-text-muted);
+  }
+
+  #isso-thread .isso-comment-text p {
+    color: var(--post-text-sec);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  #isso-thread .isso-comment-footer a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--post-text-muted);
+    text-decoration: none;
+  }
+
+  #isso-thread .isso-comment-footer a:hover {
+    color: var(--blue-bright);
+  }
+
+  #isso-thread h4.isso-thread-heading {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--post-text-muted);
+    margin-bottom: 1rem;
+  }
+</style>
+
+<script
+  data-isso="https://isso.praxisproject.dev/"
+  src="https://isso.praxisproject.dev/js/embed.min.js"></script>
 
 <script>
   import "../../scripts/scrollspy-toc.js";
