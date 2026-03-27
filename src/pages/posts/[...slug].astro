@@ -761,18 +761,83 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
 </style>
 
 <style is:global>
-  /* ─── ISSO COMMENTS ─────────────────── */
+  /* ─── ISSO COMMENTS ─────────────────────────────────────────────────────────
+   isso injects its own DOM and stylesheet at runtime, so all overrides here
+   need is:global to escape Astro's scoped CSS. Selectors are prefixed with
+   #isso-thread throughout to avoid leaking into the rest of the page.       */
 
+  /* thread container — top border separates comments from post content */
   #isso-thread {
-    margin-top: 3rem;
-    padding-top: 2rem;
     border-top: 1px solid var(--post-border);
   }
 
+  /* reset isso's default font and color across all injected elements */
   #isso-thread * {
     font-family: var(--sans);
     color: var(--post-text-sec);
   }
+
+  /* ─── FORM LAYOUT ────────────────────────────────────────────────────────────
+   isso renders name/email/website inputs and submit/preview/edit buttons all
+   as <p> siblings inside .isso-auth-section. We use flex + order to split
+   them into two rows: inputs on row 1, buttons on row 2.
+
+   The DOM structure is:
+     .isso-auth-section
+       p.isso-input-wrapper  (name)      — child 1
+       p.isso-input-wrapper  (email)     — child 2
+       p.isso-input-wrapper  (website)   — child 3
+       p.isso-post-action    (submit)    — child 4
+       p.isso-post-action    (preview)   — child 5
+       p.isso-post-action    (edit)      — child 6             */
+
+  #isso-thread .isso-auth-section {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+    row-gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  /* input wrappers: grow equally to fill row 1 */
+  #isso-thread .isso-auth-section .isso-input-wrapper {
+    flex: 1 1 auto;
+    min-width: 120px;
+    margin: 0;
+    order: 1; /* row 1 */
+  }
+
+  #isso-thread .isso-auth-section .isso-input-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* invisible full-width element that forces a line break between rows.
+   order: 1 places it at the end of row 1, after all input wrappers. */
+  #isso-thread .isso-auth-section::after {
+    content: "";
+    flex-basis: 100%;
+    order: 1;
+    height: 0;
+  }
+
+  /* action buttons: don't grow, sit on row 2 */
+  #isso-thread .isso-auth-section .isso-post-action {
+    margin: 0;
+    margin-top: -0.5rem;
+    order: 2; /* row 2 */
+    flex: 0 0 auto;
+  }
+
+  /* push buttons to the right. can't use :first-of-type here because isso uses
+   <p> for both input wrappers and action buttons — :first-of-type would match
+   the first <p> overall (an input wrapper), not the first action button.
+   nth-child(4) targets the first .isso-post-action directly. */
+  #isso-thread .isso-auth-section .isso-post-action:nth-child(4) {
+    margin-left: auto;
+  }
+
+  /* ─── INPUTS & TEXTAREA ──────────────────────────────────────────────────── */
 
   #isso-thread input,
   #isso-thread textarea {
@@ -782,6 +847,8 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     color: var(--post-text);
     font-family: var(--sans);
     padding: 0.5rem 0.75rem;
+    margin: 0;
+    /* margin-bottom: 0.5rem; */
   }
 
   #isso-thread input:focus,
@@ -789,6 +856,8 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     outline: none;
     border-color: var(--blue);
   }
+
+  /* ─── SUBMIT AND PREVIEW BUTTONS ─────────────────────────────────────────── */
 
   #isso-thread input[type="submit"] {
     background: var(--blue);
@@ -799,7 +868,10 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     font-size: 0.78rem;
     padding: 0.5rem 1.2rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
   }
 
   #isso-thread input[type="submit"]:hover {
@@ -807,9 +879,37 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     border-color: var(--blue-bright);
   }
 
+  #isso-thread input[type="button"] {
+    background: transparent;
+    color: var(--text-sec);
+    border: 1px solid var(--border-hover);
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+  }
+
+  #isso-thread input[type="button"]:hover {
+    color: var(--text);
+    border-color: var(--blue-bright);
+  }
+
+  /* ─── COMMENTS ───────────────────────────────────────────────────────────── */
+
+  /* extra space before first comment to clear the submit/preview buttons */
+  #isso-thread #isso-root > .isso-comment:first-child {
+    margin-top: -1rem;
+  }
+
   #isso-thread .isso-comment {
     border-top: 1px solid var(--post-border);
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
+    margin-bottom: -0.25rem;
     background: none;
   }
 
@@ -832,6 +932,7 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     line-height: 1.7;
   }
 
+  /* reply/edit/delete links in comment footer */
   #isso-thread .isso-comment-footer a {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -843,6 +944,8 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     color: var(--blue-bright);
   }
 
+  /* ─── THREAD HEADING ─────────────────────────────────────────────────────── */
+
   #isso-thread h4.isso-thread-heading {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -852,28 +955,41 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
     color: var(--post-text-muted);
     margin-bottom: 1rem;
   }
+
+  /* ─── VOTE BUTTONS ─────────────────────────────────────────────────────── */
+
+  #isso-thread .isso-upvote {
+    margin-left: -0.1rem;
+  }
+  #isso-thread .isso-downvote {
+    margin-left: 0.5rem;
+  }
+
+  #isso-thread .isso-upvote svg,
+  #isso-thread .isso-downvote svg {
+    fill: var(--text-muted) !important;
+    transition: fill 0.2s;
+  }
+
+  #isso-thread .isso-upvote:hover svg {
+    fill: green !important;
+  }
+
+  #isso-thread .isso-downvote:hover svg {
+    fill: red !important;
+  }
+
+  #isso-thread .isso-upvote.voted svg {
+    fill: green !important;
+  }
+
+  #isso-thread .isso-downvote.voted svg {
+    fill: red !important;
+  }
 </style>
 
 <script>
-  function initIsso() {
-    // Remove any existing isso script to force a fresh load
-    const existing = document.querySelector('script[data-isso]');
-    if (existing) existing.remove();
-
-    // Remove existing isso thread content so it re-renders
-    const thread = document.getElementById('isso-thread');
-    if (thread) thread.innerHTML = '<noscript>Javascript needs to be activated to view comments.</noscript>';
-
-    // Only inject on post pages that have the thread element
-    if (!thread) return;
-
-    const script = document.createElement('script');
-    script.setAttribute('data-isso', 'https://isso.praxisproject.dev/');
-    script.src = 'https://isso.praxisproject.dev/js/embed.min.js';
-    document.body.appendChild(script);
-  }
-
-  document.addEventListener('astro:page-load', initIsso);
+  import "../../scripts/isso.js";
 </script>
 
 <script>
