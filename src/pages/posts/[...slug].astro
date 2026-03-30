@@ -72,7 +72,17 @@ const bodyClass = post.data.theme ? `theme-${post.data.theme}` : "";
 // letting you swap backgrounds/styles per post
 ---
 
-<BaseLayout pageTitle={post.data.title} bodyClass={bodyClass}>
+<BaseLayout
+  pageTitle={post.data.title}
+  bodyClass={bodyClass}
+  ogTitle={post.data.title}
+  ogDescription={post.data.description}
+  ogImage={post.data.image
+    ? new URL(post.data.image.url.src, "https://praxisproject.dev").href
+    : undefined}
+  ogUrl={`https://praxisproject.dev/posts/${post.id}/`}
+  ogType="article"
+>
   <div class="post-page">
     <!-- Post header -->
     <div class="post-header">
