@@ -4,7 +4,7 @@
 
 <footer>
   · © 2026 Praxis Project · Built with Astro ·
-  <a href="/rss.xml">RSS</a>
+  <a href="/rss.xml">RSS</a> ·
 </footer>
 
 <style>
@@ -22,5 +22,14 @@
     font-size: 0.75rem;
     border-top: 1px solid var(--border);
     padding: 1rem 0;
+  }
+
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: var(--blue-bright);
   }
 </style>

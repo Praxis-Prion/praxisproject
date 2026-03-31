@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'Praxis Project',
-    description: '--- Site Description Goes Here ---',
+    description: 'Homelabbing, woodworking, registered nursing, and other unrelated things',
     site: context.site!,
     items: posts
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
